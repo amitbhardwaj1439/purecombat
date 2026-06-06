@@ -6,30 +6,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PureCombat</title>
 <style>
-body {margin:0;font-family:Arial;background:#0e0e0e;color:#fff;}
-header {background:#111;padding:30px;text-align:center;}
-header img {height:80px;margin-bottom:10px;}
-nav {background:#1a1a1a;padding:12px;text-align:center;}
+body {margin:0;font-family:Arial;color:#fff;}
+
+
+/* Hero Section */
+.hero {
+  height:100vh;
+  background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+  url('https://images.unsplash.com/photo-1716307043003-dbe6a5cc496e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.hero h1 {font-size:48px;color:#ff3c00;margin:10px 0;}
+.hero p {font-size:20px;}
+
+
+nav {background:#111;padding:15px;text-align:center;position:sticky;top:0;}
 nav a {color:#fff;margin:0 15px;text-decoration:none;font-weight:bold;}
 nav a:hover {color:#ff3c00;}
-section {padding:50px 20px;text-align:center;}
-.card {background:#1c1c1c;padding:25px;border-radius:10px;width:90%;max-width:900px;margin:auto;}
+
+
+section {padding:60px 20px;text-align:center;background:#0e0e0e;}
+.card {background:#1c1c1c;padding:25px;border-radius:10px;max-width:900px;margin:auto;}
+
+
 h2 {color:#ff3c00;}
-.btn {background:#ff3c00;padding:12px 20px;color:white;text-decoration:none;display:inline-block;margin-top:15px;border-radius:6px;cursor:pointer;}
-.whatsapp {position:fixed;bottom:20px;right:20px;background:#25D366;padding:14px 20px;color:white;text-decoration:none;border-radius:50px;font-weight:bold;}
-input, textarea {width:90%;padding:10px;margin:8px 0;border-radius:6px;border:none;}
+
+
+.btn {background:#ff3c00;padding:12px 22px;color:white;text-decoration:none;border-radius:6px;display:inline-block;margin-top:15px;}
+
+
+.whatsapp {position:fixed;bottom:20px;right:20px;background:#25D366;padding:14px 18px;color:white;text-decoration:none;border-radius:50px;font-weight:bold;}
+
+
 footer {background:#111;padding:15px;text-align:center;}
+
+
+input, textarea {
+  width:90%;padding:12px;margin:8px 0;border-radius:6px;border:none;
+}
 </style>
 </head>
 <body>
 
-<header>
-<img src="logo.png" alt="logo">
-<h1>PureCombat</h1>
-<p>Train Like a Fighter. Build Strength. Unlock Your Potential.</p>
-<a class="btn" href="#join">Join Now</a>
-</header>
-
+<div class="hero">
+  <h1>PureCombat</h1>
+  <p>Train Like a Fighter. Build Strength. Dominate Your Limits.</p>
+  <a href="#join" class="btn">Join Now</a>
+</div>
 <nav>
 <a href="#about">About</a>
 <a href="#services">Services</a>
@@ -40,7 +67,7 @@ footer {background:#111;padding:15px;text-align:center;}
 <section id="about">
 <div class="card">
 <h2>About Us</h2>
-<p>PureCombat is your ultimate destination for boxing and MMA training, helping you build strength, confidence, and mental toughness.</p>
+<p>PureCombat delivers elite boxing & MMA training designed to build strength, endurance, and confidence.</p>
 </div>
 </section>
 
@@ -50,8 +77,8 @@ footer {background:#111;padding:15px;text-align:center;}
 <ul>
 <li>Boxing & MMA Training</li>
 <li>Professional Coaches</li>
-<li>Personal Workout Plans</li>
-<li>Weight Loss & Muscle Gain Programs</li>
+<li>Strength & Conditioning</li>
+<li>Weight Loss & Muscle Gain</li>
 </ul>
 <a href="#join" class="btn">Start Training</a>
 </div>
@@ -60,7 +87,6 @@ footer {background:#111;padding:15px;text-align:center;}
 <section id="join">
 <div class="card">
 <h2>Join Us</h2>
-<p>Fill your details and we will contact you</p>
 <form>
 <input type="text" placeholder="Your Name" required>
 <input type="tel" placeholder="Phone Number" required>
@@ -69,7 +95,6 @@ footer {background:#111;padding:15px;text-align:center;}
 </form>
 </div>
 </section>
-
 
 <section id="contact">
 <div class="card">
@@ -81,7 +106,6 @@ footer {background:#111;padding:15px;text-align:center;}
 </section>
 
 https://wa.me/919728894872?text=Hi%20I%20want%20to%20join%20PureCombat
-
 
 <footer>
 <p>© 2026 PureCombat</p>

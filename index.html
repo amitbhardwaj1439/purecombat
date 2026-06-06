@@ -422,6 +422,76 @@ footer{
     }
 }
 
+/* ⚡ Lightning Flicker Effect */
+.lightning-text{
+    font-size:1.4rem;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#FFD700;
+    text-transform:uppercase;
+    position:relative;
+    display:inline-block;
+    animation: flicker 2.5s infinite;
+}
+
+/* Glow base */
+.lightning-text{
+    text-shadow:
+    0 0 5px #FFD700,
+    0 0 15px #FFD700,
+    0 0 30px rgba(255,215,0,0.6);
+}
+
+/* ⚡ Flicker + lightning flash */
+@keyframes flicker {
+
+    0%{
+        opacity:1;
+        transform:scale(1);
+        text-shadow:
+        0 0 5px #FFD700,
+        0 0 15px #FFD700;
+    }
+
+    10%{
+        opacity:0.6;
+    }
+
+    12%{
+        opacity:1;
+    }
+
+    20%{
+        opacity:0.3;
+    }
+
+    22%{
+        opacity:1;
+        text-shadow:
+        0 0 10px #fff,
+        0 0 25px #FFD700,
+        0 0 50px #FFD700;
+    }
+
+    40%{
+        opacity:1;
+    }
+
+    60%{
+        opacity:0.8;
+    }
+
+    80%{
+        opacity:1;
+        transform:scale(1.05);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
 </style>
 </head>
 
@@ -433,7 +503,7 @@ footer{
 	</div>
 
 	<h1>PURECOMBAT</h1>
-	<p class="sub-brand glow-text">GEAR UP FOR GREATNESS</p>
+	<p class="sub-brand lightning-text">GEAR UP FOR GREATNESS</p>
 
 	<p class="tagline">
 	Train Like a Fighter • Think Like a Champion • Live Without Limits

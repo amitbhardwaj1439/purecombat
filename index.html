@@ -1,231 +1,136 @@
 
-h2 {color:#ff3c00;}
-.btn {background:#ff3c00;padding:12px 22px;color:white;text-decoration:none;border-radius:6px;margin-top:15px;display:inline-block;}
-input, textarea {width:90%;padding:12px;margin:8px 0;border:none;border-radius:6px;}
-.whatsapp {
-  position:fixed;bottom:20px;right:20px;background:#25D366;padding:14px 18px;border-radius:50px;text-decoration:none;color:#fff;font-weight:bold;
-}
-footer {background:#111;padding:20px;text-align:center;}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PURECOMBAT</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#000;color:#fff}
+
+/* HERO */
+.hero{
+ height:100vh;
+ background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.85)),
+ url('https://images.unsplash.com/photo-1716307046875-4c4ba2f43cab?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+ display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+
+.hero h1{font-size:64px;color:#FFD700;letter-spacing:3px;font-weight:900;margin:0}
+.hero p{font-size:20px;margin:10px 0}
+
+.btn{background:#ff3c00;padding:12px 24px;color:#fff;text-decoration:none;border-radius:6px}
+
+nav{background:#111;padding:15px;text-align:center;position:sticky;top:0}
+nav a{color:#fff;margin:0 12px;text-decoration:none;font-weight:bold}
+nav a:hover{color:#ff3c00}
+
+section{padding:70px 20px;text-align:center}
+
+.bg{
+ background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),
+ url('https://images.unsplash.com/photo-1575747515871-2e323827539e?auto=format&fit=crop&w=1600&q=80') center/cover fixed}
+
+.card{background:#1c1c1c;padding:25px;border-radius:10px;max-width:1000px;margin:auto}
+
+h2{color:#FFD700}
+
+.gallery img{width:30%;margin:10px;border-radius:10px}
+
+.plans{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
+.plan{background:#111;padding:25px;border-radius:10px;width:280px}
+.plan h3{color:#FFD700}
+
+input,textarea{width:90%;padding:12px;margin:8px 0;border:none;border-radius:6px}
+
+iframe{width:100%;height:300px;border:0;border-radius:10px;margin-top:15px}
+
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:14px 18px;border-radius:50px;color:#fff;text-decoration:none}
+
+footer{background:#111;padding:20px;text-align:center}
 </style>
 </head>
+
 <body>
 
-<!-- HERO -->
 <div class="hero">
-  <h1 style="color:#ffd700;letter-spacing:2px;font-weight:900;">PURECOMBAT</h1>
-  <p>Train Like a Fighter. Build Strength. Dominate Your Limits.</p>
-  <a href=\"#join\" class=\"btn\">JOIN NOW</
+ <h1>PURECOMBAT</h1>
+ <p>Train Like a Fighter. Build Strength. Dominate Your Limits.</p>
+ <a href="#join" class="btn">JOIN NOW</a>
 </div>
 
-
-<!-- NAV -->
 <nav>
-  logo.png
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#plans">Plans</a>
-  <a href="#contact">Contact</a>
+ <a href="#about">About</a>
+ <a href="#services">Services</a>
+ <a href="#gallery">Gallery</a>
+ <a href="#plans">Plans</a>
+ <a href="#contact">Contact</a>
 </nav>
 
-<!-- ABOUT -->
-<section id="about" class="bg-section">
-<div class="card">
-<h2>About PureCombat</h2>
-<p>We provide elite boxing and MMA training combining fitness, strength, and combat techniques.</p>
-</div>
+<section id="about" class="bg">
+ <div class="card">
+ <h2>About Us</h2>
+ <p>Elite MMA & boxing training designed for real results—strength, discipline, confidence.</p>
+ </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
-<div class="card">
-<h2>Services</h2>
-<ul>
-<li>Boxing & MMA Training</li>
-<li>Personal Fitness Coaching</li>
-<li>Strength & Conditioning</li>
-<li>Weight Loss & Muscle Gain</li>
-</ul>
-</div>
+ <div class="card">
+ <h2>Services</h2>
+ <ul>
+ <li>Boxing & MMA Training</li>
+ <li>Personal Coaching</li>
+ <li>Strength & Conditioning</li>
+ <li>Weight Loss Programs</li>
+ </ul>
+ </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery" class="bg-section">
-<div class="card">
-<h2>Gallery</h2>
-<p>Add your gym photos here later</p>
-</div>
+<section id="gallery" class="bg">
+ <div class="card">
+ <h2>Gallery</h2>
+ <div class="gallery">
+ <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed">
+ <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438">
+ <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e">
+ </div>
+ </div>
 </section>
 
-
-<!-- PLANS -->
 <section id="plans">
-<div class="card">
-<h2>Membership Plans</h2>
-<p>Basic Plan, Pro Plan, Premium Coaching</p>
-<a class="btn" href="#join">Join Today</a>
-</div>
+ <div class="card">
+ <h2>Membership Plans</h2>
+ <div class="plans">
+ <div class="plan"><h3>Basic</h3><p>₹1999/month</p></div>
+ <div class="plan"><h3>Pro</h3><p>₹2999/month</p></div>
+ <div class="plan"><h3>Elite</h3><p>₹4999/month</p></div>
+ </div>
+ </div>
 </section>
 
-
-<!-- JOIN -->
-<section id="join" class="bg-section">
-<div class="card">
-<h2>Join Now</h2>
-<form>
-<input type="text" placeholder="Name">
-<input type="tel" placeholder="Phone">
-<textarea placeholder="Your Goal"></textarea>
-<button class="btn">Submit</button>
-</form>
-</div>
+<section id="join" class="bg">
+ <div class="card">
+ <h2>Join Now</h2>
+ <input placeholder="Name">
+ <input placeholder="Phone">
+ <textarea placeholder="Goal"></textarea>
+ https://wa.me/919728894872?text=I%20want%20to%20join%20PureCombat
+ </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
-<div class="card">
-<h2>Contact</h2>
-<p>📞 +91 9728894872</p>
-<p>📞 +91 8411008276</p>
-<p>✉️ purecombatprivatelimited@gmail.com</p>
-</div>
+ <div class="card">
+ <h2>Contact</h2>
+ <p>📞 +91 9728894872</p>
+ <p>📞 +91 8411008276</p>
+ <p>✉️ purecombatprivatelimited@gmail.com</p>
+ <iframe src="https://maps.google.com/maps?q=gurgaon&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+ </div>
 </section>
 
-justify-content:center;
-  text-align:center;
-}
+<a class="whatsapp" href="https://wa.me/919728894872">WhatsApp</a>
 
-
-.hero h1 {font-size:50px;color:#ff3c00;margin:0;}
-.hero p {font-size:20px;margin:10px 0;}
-nav {background:#111;padding:15px;position:sticky;top:0;text-align:center;}
-nav img {height:40px;vertical-align:middle;margin-right:10px;}
-nav a {color:#fff;margin:0 12px;text-decoration:none;font-weight:bold;}
-nav a:hover {color:#ff3c00;}
-
-
-section {padding:70px 20px;text-align:center;}
-/* BACKGROUND SECTIONS */
-.bg-section {
-  background:linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
-  url('https://images.unsplash.com/photo-1575747515871-2e323827539e?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
-}
-.card {background:rgba(0,0,0,0.7);padding:30px;border-radius:10px;max-width:900px;margin:auto;}
-h2 {color:#ff3c00;}
-.btn {background:#ff3c00;padding:12px 22px;color:white;text-decoration:none;border-radius:6px;margin-top:15px;display:inline-block;}
-input, textarea {width:90%;padding:12px;margin:8px 0;border:none;border-radius:6px;}
-.whatsapp {
-  position:fixed;bottom:20px;right:20px;background:#25D366;padding:14px 18px;border-radius:50px;text-decoration:none;color:#fff;font-weight:bold;
-}
-footer {background:#111;padding:20px;text-align:center;}
-</style>
-</head>
-<body>
-
-
-<!-- HERO -->
-<div class="hero">
-  logo.png
-  <h1>PureCombat</h1>
-  <p>Train Like a Fighter. Build Strength. Dominate Your Limits.</p>
-  <a href="#join" class="btn">Join Now</a>
-</div>
-
-
-
-
-<!-- NAV -->
-<nav>
-  <img src="logo.png">
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#plans">Plans</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-
-<!-- ABOUT -->
-<section id="about" class="bg-section">
-<div class="card">
-<h2>About PureCombat</h2>
-<p>We provide elite boxing and MMA training combining fitness, strength, and combat techniques.</p>
-</div>
-</section>
-
-
-<!-- SERVICES -->
-<section id="services">
-<div class="card">
-<h2>Services</h2>
-<ul>
-<li>Boxing & MMA Training</li>
-<li>Personal Fitness Coaching</li>
-<li>Strength & Conditioning</li>
-<li>Weight Loss & Muscle Gain</li>
-</ul>
-</div>
-</section>
-
-
-<!-- GALLERY -->
-<section id="gallery" class="bg-section">
-<div class="card">
-<h2>Gallery</h2>
-<p>Add your gym photos here later</p>
-</div>
-</section>
-
-
-
-
-<!-- PLANS -->
-<section id="plans">
-<div class="card">
-<h2>Membership Plans</h2>
-<p>Basic Plan, Pro Plan, Premium Coaching</p>
-<a class="btn" href="#join">Join Today</a>
-</div>
-</section>
-
-
-
-
-<!-- JOIN -->
-<section id="join" class="bg-section">
-<div class="card">
-<h2>Join Now</h2>
-<form>
-<input type="text" placeholder="Name">
-<input type="tel" placeholder="Phone">
-<textarea placeholder="Your Goal"></textarea>
-<button class="btn">Submit</button>
-</form>
-</div>
-</section>
-
-
-<!-- CONTACT -->
-<section id="contact">
-<div class="card">
-<h2>Contact</h2>
-<p>📞 +91 9728894872</p>
-<p>📞 +91 8411008276</p>
-<p>✉️ purecombatprivatelimited@gmail.com</p>
-</div>
-</section>
-
-
-https://wa.me/919728894872?text=Hi%20I%20want%20to%20join%20PureCombat
-<p>© 2026 PureCombat</p>
-</footer>
-</body>
-</html>
-
-
-<footer>
-<p>© 2026 PureCombat</p>
-</footer>
+<footer>© 2026 PURECOMBAT</footer>
 
 </body>
 </html>

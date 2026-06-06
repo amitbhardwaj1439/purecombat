@@ -540,20 +540,23 @@ style="background-image:url('https://images.unsplash.com/photo-1599058917765-a78
     <div class="card overlay-card">
         <h2>Join Now</h2>
 
-        <form class="join-form"
-              action="https://wa.me/919728894872?text=Hi%20I%20want%20to%20join%20PureCombat"
-              method="get"
-              target="_blank">
+		<form class="join-form"
+		id="whatsappForm"
+		onsubmit="sendToWhatsApp(); return false;">
 
-            <input type="text" placeholder="Your Name" required>
-            <input type="tel" placeholder="Phone Number" required>
-			<input type="tel" placeholder="Age" required>
-            <textarea placeholder="Your Fitness Goal"></textarea>
+		<input type="text" id="name" placeholder="Your Name" required>
 
-            <button type="submit">
-                Send via WhatsApp
-            </button>
-        </form>
+		<input type="tel" id="phone" placeholder="Phone Number" required>
+
+		<input type="number" id="age" placeholder="Age" required>
+
+		<textarea id="goal" placeholder="Your Fitness Goal"></textarea>
+
+		<button type="submit">
+		Send via WhatsApp
+		</button>
+
+		</form>
     </div>
 </section>
 
@@ -599,6 +602,29 @@ target="_blank">
 <footer>
     © 2026 PURECOMBAT — Elite Combat Training
 </footer>
+
+<script>
+function sendToWhatsApp() {
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let age = document.getElementById("age").value;
+    let goal = document.getElementById("goal").value;
+
+    let message =
+`🔥 New Enquiry for PureCombat 🔥
+👤 Name: ${name}
+📞 Phone: ${phone}
+🎂 Age: ${age}
+💪 Goal: ${goal}
+
+Please contact me.`;
+
+    let url = "https://wa.me/919728894872?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>

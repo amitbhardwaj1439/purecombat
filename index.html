@@ -758,84 +758,38 @@ Please contact me.`;
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.clientHeight;
-
-        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
-            current = section.getAttribute("id");
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-        }
-    });
-
-});
-</script>
-
-<script>
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
-const progressBar = document.getElementById("scrollProgress");
-
 /* =========================
-   NAV ACTIVE HIGHLIGHT
+   ACTIVE SECTION TRACKING (ACCURATE)
 ========================= */
-window.addEventListener("scroll", () => {
+const observer = new IntersectionObserver(
+    (entries) => {
 
-    let current = "";
+        entries.forEach(entry => {
 
-    sections.forEach(section => {
-        const top = section.offsetTop - 150;
-        const height = section.clientHeight;
+            if (entry.isIntersecting) {
 
-        if (pageYOffset >= top && pageYOffset < top + height) {
-            current = section.getAttribute("id");
-        }
-    });
+                let id = entry.target.getAttribute("id");
 
-    navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-        }
-    });
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
 
-    /* =========================
-       SCROLL PROGRESS BAR
-    ========================= */
-    let scrollTop = document.documentElement.scrollTop;
-    let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    let progress = (scrollTop / scrollHeight) * 100;
+                    if (link.getAttribute("href") === "#" + id) {
+                        link.classList.add("active");
+                    }
+                });
 
-    progressBar.style.width = progress + "%";
-});
+            }
 
+        });
 
-/* =========================
-   SECTION FADE-IN ON SCROLL
-========================= */
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
-    });
-}, { threshold: 0.15 });
+    },
+    {
+        threshold: 0.55   // 👈 KEY FIX (section must be 55% visible)
+    }
+);
 
-window.addEventListener("load", () => {
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+sections.forEach(section => {
+    observer.observe(section);
 });
 </script>
 

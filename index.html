@@ -1,136 +1,436 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PURECOMBAT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PURECOMBAT – Elite Combat Training</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-<style>
-body{margin:0;font-family:Arial;background:#000;color:#fff}
+        :root {
+            --gold: #FFD700;
+            --orange: #ff3c00;
+            --dark: #0a0a0a;
+            --card-bg: #141414;
+            --glass: rgba(255,255,255,0.04);
+            --radius: 16px;
+            --shadow: 0 20px 40px -12px rgba(0,0,0,0.8);
+        }
 
-/* HERO */
-.hero{
- height:100vh;
- background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.85)),
- url('https://images.unsplash.com/photo-1716307046875-4c4ba2f43cab?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
- display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+        html { scroll-behavior: smooth; }
 
-.hero h1{font-size:64px;color:#FFD700;letter-spacing:3px;font-weight:900;margin:0}
-.hero p{font-size:20px;margin:10px 0}
+        body {
+            background: var(--dark);
+            color: #eaeaea;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
 
-.btn{background:#ff3c00;padding:12px 24px;color:#fff;text-decoration:none;border-radius:6px}
+        /* modern scroll */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
-nav{background:#111;padding:15px;text-align:center;position:sticky;top:0}
-nav a{color:#fff;margin:0 12px;text-decoration:none;font-weight:bold}
-nav a:hover{color:#ff3c00}
+        img { display: block; max-width: 100%; height: auto; }
 
-section{padding:70px 20px;text-align:center}
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.9)),
+                        url('https://images.unsplash.com/photo-1716307046875-4c4ba2f43cab?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            position: relative;
+        }
 
-.bg{
- background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),
- url('https://images.unsplash.com/photo-1575747515871-2e323827539e?auto=format&fit=crop&w=1600&q=80') center/cover fixed}
+        .hero h1 {
+            font-size: clamp(3.2rem, 12vw, 6rem);
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(255,215,0,0.15);
+            margin-bottom: 0.25em;
+        }
 
-.card{background:#1c1c1c;padding:25px;border-radius:10px;max-width:1000px;margin:auto}
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            font-weight: 400;
+            color: #ddd;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            letter-spacing: 0.4px;
+        }
 
-h2{color:#FFD700}
+        .btn {
+            display: inline-block;
+            background: var(--orange);
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            letter-spacing: 0.8px;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 20px rgba(255,60,0,0.3);
+            border: 1px solid transparent;
+        }
 
-.gallery img{width:30%;margin:10px;border-radius:10px}
+        .btn:hover {
+            background: #e63500;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 30px rgba(255,60,0,0.4);
+        }
 
-.plans{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
-.plan{background:#111;padding:25px;border-radius:10px;width:280px}
-.plan h3{color:#FFD700}
+        /* ─── NAV (glass sticky) ─── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,10,10,0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 16px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,215,0,0.08);
+        }
 
-input,textarea{width:90%;padding:12px;margin:8px 0;border:none;border-radius:6px}
+        nav a {
+            color: #ccc;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: color 0.2s;
+            display: inline-block;
+            padding: 4px 0;
+        }
 
-iframe{width:100%;height:300px;border:0;border-radius:10px;margin-top:15px}
+        nav a:hover { color: var(--gold); }
 
-.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:14px 18px;border-radius:50px;color:#fff;text-decoration:none}
+        /* ─── SECTIONS ─── */
+        section { padding: 90px 20px; }
 
-footer{background:#111;padding:20px;text-align:center}
-</style>
+        .card {
+            background: var(--card-bg);
+            padding: 40px 28px;
+            border-radius: var(--radius);
+            max-width: 1120px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .bg {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+                        url('https://images.unsplash.com/photo-1575747515871-2e323827539e?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+        }
+
+        h2 {
+            color: var(--gold);
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.8rem;
+        }
+
+        /* ─── GALLERY (modern grid) ─── */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery img {
+            width: 100%;
+            aspect-ratio: 1 / 1.1;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+            filter: grayscale(0.2) brightness(0.9);
+            border: 1px solid rgba(255,215,0,0.05);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+            filter: grayscale(0) brightness(1.05);
+            box-shadow: 0 18px 40px -8px rgba(255,215,0,0.15);
+        }
+
+        /* ─── PLANS ─── */
+        .plans {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .plan {
+            background: #111;
+            border: 1px solid #252525;
+            padding: 32px 20px;
+            border-radius: var(--radius);
+            width: 270px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+        }
+
+        .plan:hover {
+            border-color: var(--gold);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -8px rgba(255,215,0,0.08);
+        }
+
+        .plan h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+        }
+
+        .plan p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        /* ─── JOIN / FORM ─── */
+        .join-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .join-form input,
+        .join-form textarea {
+            width: 100%;
+            max-width: 460px;
+            padding: 14px 18px;
+            background: #1c1c1c;
+            border: 1px solid #2c2c2c;
+            border-radius: 60px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: #eee;
+            transition: border 0.2s;
+        }
+
+        .join-form textarea {
+            border-radius: 20px;
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .join-form input:focus,
+        .join-form textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .join-form .btn {
+            border-radius: 60px;
+            padding: 14px 44px;
+            margin-top: 6px;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            box-shadow: 0 6px 16px rgba(255,215,0,0.2);
+            border: none;
+        }
+
+        .join-form .btn:hover {
+            background: #f5c800;
+            color: #000;
+            box-shadow: 0 10px 28px rgba(255,215,0,0.3);
+        }
+
+        /* ─── WHATSAPP FAB ─── */
+        .whatsapp {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #25D366;
+            padding: 14px 22px;
+            border-radius: 60px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.3);
+            backdrop-filter: blur(4px);
+            transition: all 0.25s;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1rem;
+        }
+
+        .whatsapp:hover {
+            background: #1ebe5b;
+            transform: scale(1.05);
+            box-shadow: 0 12px 28px rgba(37,211,102,0.4);
+        }
+
+        /* ─── CONTACT ─── */
+        .contact-info p {
+            font-size: 1.15rem;
+            margin: 10px 0;
+            color: #ccc;
+        }
+
+        iframe {
+            width: 100%;
+            height: 280px;
+            border: 0;
+            border-radius: 12px;
+            margin-top: 24px;
+            filter: grayscale(0.15) brightness(0.8);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: #0a0a0a;
+            padding: 24px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,215,0,0.06);
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 700px) {
+            nav a { margin: 0 6px; font-size: 0.85rem; }
+            section { padding: 60px 16px; }
+            .card { padding: 28px 16px; }
+            h2 { font-size: 1.8rem; }
+            .gallery { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 470px) {
+            .gallery { grid-template-columns: 1fr; }
+            .plan { width: 100%; max-width: 320px; }
+        }
+
+        /* micro detail */
+        .gold-accent { color: var(--gold); }
+        ul { list-style: none; padding: 0; }
+        ul li::before { content: "⚡ "; color: var(--gold); font-weight: bold; }
+        ul li { margin: 8px 0; font-size: 1.05rem; }
+
+        .btn-wa { display: none; } /* clean */
+    </style>
 </head>
-
 <body>
 
+<!-- HERO -->
 <div class="hero">
- <h1>PURECOMBAT</h1>
- <p>Train Like a Fighter. Build Strength. Dominate Your Limits.</p>
- <a href="#join" class="btn">JOIN NOW</a>
+    <h1>PURECOMBAT</h1>
+    <p>Train Like a Fighter. Build Strength. Dominate Your Limits.</p>
+    <a href="#join" class="btn">JOIN NOW</a>
 </div>
 
+<!-- NAV -->
 <nav>
- <a href="#about">About</a>
- <a href="#services">Services</a>
- <a href="#gallery">Gallery</a>
- <a href="#plans">Plans</a>
- <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#plans">Plans</a>
+    <a href="#contact">Contact</a>
 </nav>
 
+<!-- ABOUT -->
 <section id="about" class="bg">
- <div class="card">
- <h2>About Us</h2>
- <p>Elite MMA & boxing training designed for real results—strength, discipline, confidence.</p>
- </div>
+    <div class="card">
+        <h2>About Us</h2>
+        <p style="max-width:720px; margin:0 auto; font-size:1.2rem; color:#bbb;">Elite MMA &amp; boxing training designed for real results—strength, discipline, confidence. Every session sharpens your edge.</p>
+    </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
- <div class="card">
- <h2>Services</h2>
- <ul>
- <li>Boxing & MMA Training</li>
- <li>Personal Coaching</li>
- <li>Strength & Conditioning</li>
- <li>Weight Loss Programs</li>
- </ul>
- </div>
+    <div class="card">
+        <h2>Services</h2>
+        <ul style="max-width:500px; margin:20px auto 0; text-align:left; display:inline-block;">
+            <li>Boxing &amp; MMA Training</li>
+            <li>Personal Coaching</li>
+            <li>Strength &amp; Conditioning</li>
+            <li>Weight Loss Programs</li>
+        </ul>
+    </div>
 </section>
 
+<!-- GALLERY -->
 <section id="gallery" class="bg">
- <div class="card">
- <h2>Gallery</h2>
- <div class="gallery">
- <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed">
- <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438">
- <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e">
- </div>
- </div>
+    <div class="card">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=600&q=80" alt="fighter training" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80" alt="gym intensity" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=600&q=80" alt="combat ready" loading="lazy">
+        </div>
+    </div>
 </section>
 
+<!-- PLANS -->
 <section id="plans">
- <div class="card">
- <h2>Membership Plans</h2>
- <div class="plans">
- <div class="plan"><h3>Basic</h3><p>₹1999/month</p></div>
- <div class="plan"><h3>Pro</h3><p>₹2999/month</p></div>
- <div class="plan"><h3>Elite</h3><p>₹4999/month</p></div>
- </div>
- </div>
+    <div class="card">
+        <h2>Membership Plans</h2>
+        <div class="plans">
+            <div class="plan"><h3>Basic</h3><p>₹1,999/month</p></div>
+            <div class="plan"><h3>Pro</h3><p>₹2,999/month</p></div>
+            <div class="plan"><h3>Elite</h3><p>₹4,999/month</p></div>
+        </div>
+    </div>
 </section>
 
+<!-- JOIN -->
 <section id="join" class="bg">
- <div class="card">
- <h2>Join Now</h2>
- <input placeholder="Name">
- <input placeholder="Phone">
- <textarea placeholder="Goal"></textarea>
- https://wa.me/919728894872?text=I%20want%20to%20join%20PureCombat
- </div>
+    <div class="card">
+        <h2>Join Now</h2>
+        <p style="color:#aaa; margin-bottom:10px;">Start your transformation today</p>
+        <form class="join-form" action="https://wa.me/919728894872?text=I%20want%20to%20join%20PureCombat" method="get" target="_blank">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="tel" name="phone" placeholder="Phone" required>
+            <textarea name="goal" placeholder="Your goal (optional)"></textarea>
+            <button type="submit" class="btn">Send via WhatsApp</button>
+        </form>
+        <!-- hidden fallback: direct wa link if needed -->
+        <p style="margin-top:18px; font-size:0.9rem;"><a href="https://wa.me/919728894872?text=I%20want%20to%20join%20PureCombat" style="color:var(--gold);">or chat directly →</a></p>
+    </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
- <div class="card">
- <h2>Contact</h2>
- <p>📞 +91 9728894872</p>
- <p>📞 +91 8411008276</p>
- <p>✉️ purecombatprivatelimited@gmail.com</p>
- <iframe src="https://maps.google.com/maps?q=gurgaon&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
- </div>
+    <div class="card">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <p>📞 +91 9728894872</p>
+            <p>📞 +91 8411008276</p>
+            <p>✉️ purecombatprivatelimited@gmail.com</p>
+        </div>
+        <iframe src="https://maps.google.com/maps?q=gurgaon&t=&z=13&ie=UTF8&iwloc=&output=embed" title="location map" loading="lazy"></iframe>
+    </div>
 </section>
 
-<a class="whatsapp" href="https://wa.me/919728894872">WhatsApp</a>
+<!-- WHATSAPP FAB -->
+<a class="whatsapp" href="https://wa.me/919728894872" target="_blank" rel="noopener">
+    <span>💬</span> WhatsApp
+</a>
 
-<footer>© 2026 PURECOMBAT</footer>
+<footer>© 2026 PURECOMBAT — Elite Combat Training</footer>
 
 </body>
 </html>

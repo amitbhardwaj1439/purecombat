@@ -500,9 +500,55 @@ nav a.active{
     transition:0.3s;
     box-shadow:0 0 15px rgba(255,215,0,0.6);
 }
+/* =========================
+   ACTIVE NAV HIGHLIGHT
+========================= */
+nav a.active{
+    color:#000;
+    background:#FFD700;
+    padding:6px 12px;
+    border-radius:20px;
+    box-shadow:0 0 15px rgba(255,215,0,0.6);
+}
+
+/* =========================
+   SMOOTH SCROLL (extra smooth feel)
+========================= */
+html{
+    scroll-behavior:smooth;
+}
+
+/* =========================
+   SCROLL PROGRESS BAR
+========================= */
+#scrollProgress{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:4px;
+    background:linear-gradient(90deg,#FFD700,#ff3c00);
+    z-index:9999;
+}
+
+/* =========================
+   SECTION FADE ANIMATION
+========================= */
+section{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
+}
+
+section.show{
+    opacity:1;
+    transform:translateY(0);
+}
 
 </style>
 </head>
+
+<div id="scrollProgress"></div>
 
 <body>
 
@@ -757,6 +803,61 @@ window.addEventListener("scroll", () => {
         }
     });
 
+});
+</script>
+
+<script>
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+const progressBar = document.getElementById("scrollProgress");
+
+/* =========================
+   NAV ACTIVE HIGHLIGHT
+========================= */
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+        const top = section.offsetTop - 150;
+        const height = section.clientHeight;
+
+        if (pageYOffset >= top && pageYOffset < top + height) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+    });
+
+    /* =========================
+       SCROLL PROGRESS BAR
+    ========================= */
+    let scrollTop = document.documentElement.scrollTop;
+    let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let progress = (scrollTop / scrollHeight) * 100;
+
+    progressBar.style.width = progress + "%";
+});
+
+
+/* =========================
+   SECTION FADE-IN ON SCROLL
+========================= */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.15 });
+
+sections.forEach(section => {
+    observer.observe(section);
 });
 </script>
 

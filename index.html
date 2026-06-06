@@ -43,9 +43,9 @@ body{
     text-align:center;
     padding:20px;
     background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.9)),
-    url('https://images.unsplash.com/photo-1716307046875-4c4ba2f43cab?auto=format&fit=crop&w=1600&q=80')
-    center/cover;
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),
+    url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1800&q=80')
+    center center/cover no-repeat;
 }
 
 .hero h1{
@@ -244,6 +244,45 @@ iframe{
     font-weight:700;
 }
 
+.bg-section{
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    position:relative;
+}
+
+.overlay-card{
+    background:rgba(15,15,15,0.88);
+    backdrop-filter:blur(4px);
+}
+
+.trainers{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.trainer{
+    background:#111;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    border:1px solid #222;
+}
+
+.trainer h3{
+    color:#FFD700;
+    margin-bottom:10px;
+}
+
+.tagline{
+    color:#FFD700;
+    font-size:1.4rem;
+    font-weight:600;
+    margin-top:10px;
+}
+
 footer{
     background:#000;
     text-align:center;
@@ -268,7 +307,12 @@ footer{
 
 <section class="hero">
     <h1>PURECOMBAT</h1>
-    <p>Train Like a Fighter. Build Strength. Dominate Your Limits.</p>
+    <p class="tagline">
+		Train Like a Fighter • Think Like a Champion • Live Without Limits
+	</p>
+	<p>
+		Elite MMA & Boxing Training for Strength, Discipline, Fitness and Self-Confidence.
+	</p>
     <a href="#join" class="btn">JOIN NOW</a>
 </section>
 
@@ -280,15 +324,29 @@ footer{
     <a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
-    <div class="card">
-        <h2>About Us</h2>
-        <p class="about-text">
-            PureCombat is your destination for elite MMA and boxing training.
-            Build strength, confidence, discipline and mental toughness with
-            professional coaching and structured programs designed for real results.
-        </p>
-    </div>
+<section id="about"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1800&q=80');">
+
+<section id="services"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1800&q=80');">
+
+<div class="card overlay-card">
+
+<h2>Our Services</h2>
+
+<ul class="services">
+<li>Boxing & MMA Training</li>
+<li>Professional Coaching</li>
+<li>Strength & Conditioning</li>
+<li>Weight Loss Programs</li>
+<li>Muscle Gain Programs</li>
+<li>Personal Workout Plans</li>
+<li>Self Defence Training</li>
+</ul>
+
+</div>
 </section>
 
 <section id="services">
@@ -318,8 +376,40 @@ footer{
     </div>
 </section>
 
-<section id="plans">
-    <div class="card">
+<section id="trainers"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1800&q=80');">
+
+<div class="card overlay-card">
+
+<h2>Expert Coaches</h2>
+
+<div class="trainers">
+
+<div class="trainer">
+<h3>Boxing Coach</h3>
+<p>Technical boxing, footwork, speed and conditioning.</p>
+</div>
+
+<div class="trainer">
+<h3>MMA Coach</h3>
+<p>Striking, grappling and complete combat training.</p>
+</div>
+
+<div class="trainer">
+<h3>Fitness Coach</h3>
+<p>Weight loss, strength building and body transformation.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="plans"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1800&q=80');">
+    <div class="card overlay-card">
         <h2>Membership Plans</h2>
 
         <div class="plans">
@@ -352,8 +442,10 @@ footer{
     </div>
 </section>
 
-<section id="join">
-    <div class="card">
+<section id="join"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=1800&q=80');">
+    <div class="card overlay-card">
         <h2>Join Now</h2>
 
         <form class="join-form"
@@ -372,8 +464,10 @@ footer{
     </div>
 </section>
 
-<section id="contact">
-    <div class="card">
+<section id="contact"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1800&q=80');">
+    <div class="card overlay-card">
 
         <h2>Contact</h2>
 

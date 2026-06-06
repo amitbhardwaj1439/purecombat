@@ -501,6 +501,28 @@ nav a.active{
     box-shadow:0 0 15px rgba(255,215,0,0.6);
 }
 
+/* Safe section animation (won't break layout) */
+section{
+    opacity:1;
+    transform:none;
+}
+
+/* animation only when class is added */
+section.show{
+    animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
 </style>
 </head>
 
@@ -757,6 +779,63 @@ window.addEventListener("scroll", () => {
         }
     });
 
+});
+</script>
+
+<script>
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+const progressBar = document.getElementById("scrollProgress");
+
+/* =========================
+   NAV ACTIVE HIGHLIGHT
+========================= */
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+        const top = section.offsetTop - 150;
+        const height = section.clientHeight;
+
+        if (pageYOffset >= top && pageYOffset < top + height) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+    });
+
+    /* =========================
+       SCROLL PROGRESS BAR
+    ========================= */
+    let scrollTop = document.documentElement.scrollTop;
+    let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let progress = (scrollTop / scrollHeight) * 100;
+
+    progressBar.style.width = progress + "%";
+});
+
+
+/* =========================
+   SECTION FADE-IN ON SCROLL
+========================= */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.15 });
+
+window.addEventListener("load", () => {
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 });
 </script>
 

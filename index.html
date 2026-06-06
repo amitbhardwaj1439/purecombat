@@ -384,6 +384,27 @@ footer{
     align-items:center;
     justify-content:center;
 }
+.float-btn{
+    position:fixed;
+    right:20px;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    z-index:999;
+    transition:0.3s;
+}
+
+.float-btn:hover{
+    transform:scale(1.1);
+}
+.float-btn.instagram{
+    bottom:85px;
+    background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF);
+}
 
 </style>
 </head>

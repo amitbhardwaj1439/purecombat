@@ -491,6 +491,15 @@ footer{
         transform:scale(1);
     }
 }
+/* Active section highlight */
+nav a.active{
+    color:#000;
+    background:#FFD700;
+    padding:6px 12px;
+    border-radius:20px;
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(255,215,0,0.6);
+}
 
 </style>
 </head>
@@ -518,21 +527,11 @@ footer{
 </section>
 
 <nav>
-    <div class="nav-container">
-
-        <div class="nav-logo">
-            <img src="logo.png" alt="PureCombat">
-        </div>
-
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#plans">Plans</a>
-            <a href="#contact">Contact</a>
-        </div>
-
-    </div>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#plans">Plans</a>
+    <a href="#contact">Contact</a>
 </nav>
 
 
@@ -731,6 +730,34 @@ Please contact me.`;
 
     window.open(url, "_blank");
 }
+</script>
+
+<script>
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+    });
+
+});
 </script>
 
 </body>

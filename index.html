@@ -523,6 +523,37 @@ section.show{
     }
 }
 
+.news-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.news-card{
+    background:rgba(0,0,0,.8);
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.news-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.news-card h3{
+    color:#FFD700;
+    padding:15px;
+}
+
+.news-card p{
+    padding:0 15px 15px;
+}
+
+.news-card .btn{
+    margin:15px;
+}
+
 </style>
 </head>
 
@@ -555,6 +586,9 @@ section.show{
     <a href="#plans">Plans</a>
     <a href="#contact">Contact</a>
 	<a href="#blog">Blog</a>
+	<a href="blogs.html">Blogs</a>
+	<a href="results.html">Fight Results</a>
+	<a href="fighters.html">Fighter Spotlight</a>
 </nav>
 
 
@@ -714,6 +748,38 @@ style="background-image:url('https://images.unsplash.com/photo-1517438476312-10d
 </div>
 
 </div>
+</section>
+
+
+<section id="latest-news" class="bg-section">
+
+<div class="card overlay-card">
+
+<h2>Latest Combat News</h2>
+
+<div class="news-grid">
+
+<div class="news-card">
+
+<img src="images/week-1-banner.jpg">
+
+<h3>PURECOMBAT Weekly Combat Report</h3>
+
+<p>
+Gabriel Bonfim's rise, heavyweight boxing updates,
+and emerging stars to watch.
+</p>
+
+<a href="blog/week-1.html" class="btn">
+Read Article
+</a>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 <section id="contact"

@@ -633,6 +633,47 @@ header h1{
 .fighter-card p{
     padding:0 15px 20px;
 }
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.service-card{
+    background:#111;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    border:1px solid #222;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.service-card img{
+    width:60px;
+    margin-bottom:12px;
+    filter: drop-shadow(0 0 10px rgba(255,215,0,0.4));
+}
+
+.service-card h3{
+    color:#FFD700;
+    margin-bottom:10px;
+}
+
+.service-card p{
+    color:#ccc;
+    font-size:0.95rem;
+}
+
+/* Hover effect 🔥 */
+.service-card:hover{
+    transform:translateY(-8px) scale(1.05);
+    box-shadow:
+        0 0 20px rgba(255,215,0,0.4),
+        0 0 40px rgba(255,215,0,0.2);
+    border-color:#FFD700;
+}
 
 
 </style>
@@ -685,15 +726,45 @@ style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25
 
 <h2>Our Services</h2>
 
-<ul class="services">
-<li>Boxing & MMA Training</li>
-<li>Professional Coaching</li>
-<li>Strength & Conditioning</li>
-<li>Weight Loss Programs</li>
-<li>Muscle Gain Programs</li>
-<li>Personal Workout Plans</li>
-<li>Self Defence Training</li>
-</ul>
+<div class="services-grid">
+
+    <div class="service-card">
+        https://img.icons8.com/ios-filled/100/FFD700/boxing.png
+        <h3>Boxing & MMA</h3>
+        <p>Professional striking and combat training.</p>
+    </div>
+
+    <div class="service-card">
+        img.icons8.com/ios-filled/100/FFD700/trainer.png"/>
+        <h3>Coaching</h3>
+        <p>Guidance from experienced fighters & coaches.</p>
+    </div>
+
+    <div class="service-card">
+        https://img.icons8.com/ios-filled/100/FFD700/dumbbell.png"/>
+        <h3>Strength</h3>
+        <p>Build power, endurance and conditioning.</p>
+    </div>
+
+    <div class="service-card">
+        https://img.icons8.com/ios-filled/100/FFD700/weight-loss.png
+        <h3>Weight Loss</h3>
+        <p>Transform your body with structured programs.</p>
+    </div>
+
+    <div class="service-card">
+        /ios-filled/100/FFD700/muscle.png"/>
+        <h3>Muscle Gain</h3>
+        <p>Get stronger and build lean muscle.</p>
+    </div>
+
+    <div class="service-card">
+        /ios-filled/100/FFD700/shield.png"/>
+        <h3>Self Defence</h3>
+        <p>Real-world protection techniques.</p>
+    </div>
+
+</div>
 
 </div>
 </section>

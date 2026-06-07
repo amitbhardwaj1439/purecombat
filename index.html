@@ -1,473 +1,944 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PURECOMBAT Weekly Combat Report | June 7, 2026</title>
-  <link rel="icon" type="image/png" href="../logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/png" href="logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PURECOMBAT – Elite Combat Training</title>
 
-  <style>
-    body { background: var(--dark); }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-    /* ── Article Hero ── */
-    .article-hero {
-      position: relative;
-      height: min(65vh, 540px);
-      overflow: hidden;
-    }
-    .article-hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .article-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.1) 0%,
-        rgba(0,0,0,0.4) 50%,
-        rgba(8,8,8,1) 100%
-      );
-    }
-    .article-hero-meta {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 0 24px 40px;
-      max-width: 820px;
-      margin: 0 auto;
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --gold:#FFD700;
+    --orange:#ff3c00;
+    --dark:#0a0a0a;
+    --card:#141414;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--dark);
+    color:#fff;
+    line-height:1.6;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),
+    url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1800&q=80')
+    center center/cover no-repeat;
+}
+
+.hero h1{
+    font-size:clamp(3rem,10vw,6rem);
+    color:var(--gold);
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    max-width:650px;
+    margin:20px 0 30px;
+}
+
+.hero-logo{
+    margin-bottom:20px;
+}
+
+.hero-logo img{
+    width:220px;
+    max-width:60vw;
+    filter:
+        drop-shadow(0 0 10px rgba(255,215,0,0.4))
+        drop-shadow(0 0 25px rgba(255,215,0,0.2));
+    transition:0.3s;
+}
+
+.hero-logo img:hover{
+    transform:scale(1.03);
+}
+
+.btn{
+    background:var(--orange);
+    color:#fff;
+    text-decoration:none;
+    padding:14px 32px;
+    border-radius:50px;
+    font-weight:700;
+    transition:.3s;
+    display:inline-block;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(10,10,10,.9);
+    backdrop-filter:blur(10px);
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin:0 12px;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+section{
+    padding:80px 20px;
+}
+
+.card{
+    max-width:1100px;
+    margin:auto;
+    background:var(--card);
+    padding:40px;
+    border-radius:16px;
+}
+
+h2{
+    color:var(--gold);
+    text-align:center;
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+.about-text{
+    text-align:center;
+    max-width:750px;
+    margin:auto;
+    color:#ccc;
+    font-size:1.1rem;
+}
+
+.services{
+    list-style:none;
+    max-width:500px;
+    margin:20px auto;
+}
+
+.services li{
+    margin:12px 0;
+    font-size:1.05rem;
+}
+
+.services li::before{
+    content:"⚡ ";
+    color:var(--gold);
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:25px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:12px;
+    height:320px;
+    object-fit:cover;
+}
+
+.plans{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.plan{
+    background:#111;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    border:1px solid #222;
+}
+
+.plan h3{
+    color:var(--gold);
+    margin-bottom:10px;
+}
+
+.plan p{
+    font-size:1.2rem;
+    font-weight:700;
+}
+
+.offer-note{
+    text-align:center;
+    color:var(--gold);
+    margin-top:25px;
+    font-weight:600;
+}
+
+.join-form{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+    margin-top:20px;
+}
+
+.join-form input,
+.join-form textarea{
+    width:100%;
+    max-width:500px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#1e1e1e;
+    color:#fff;
+}
+
+.join-form button{
+    border:none;
+    cursor:pointer;
+    background:var(--gold);
+    color:#000;
+    font-weight:800;
+    padding:14px 32px;
+    border-radius:50px;
+}
+
+.contact-info{
+    text-align:center;
+}
+
+.contact-info p{
+    margin:10px 0;
+    color:#ddd;
+}
+
+iframe{
+    width:100%;
+    height:320px;
+    border:none;
+    border-radius:12px;
+    margin-top:25px;
+}
+
+.whatsapp{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#25D366;
+    color:#fff;
+    text-decoration:none;
+    padding:14px 22px;
+    border-radius:50px;
+    font-weight:700;
+}
+
+.bg-section{
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    position:relative;
+}
+
+.overlay-card{
+    background:rgba(15,15,15,0.88);
+    backdrop-filter:blur(4px);
+}
+
+.trainers{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.trainer{
+    background:#111;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    border:1px solid #222;
+}
+
+.trainer h3{
+    color:#FFD700;
+    margin-bottom:10px;
+}
+
+.tagline{
+    color:#FFD700;
+    font-size:1.4rem;
+    font-weight:600;
+    margin-top:10px;
+}
+
+footer{
+    background:#000;
+    text-align:center;
+    padding:20px;
+    color:#888;
+}
+
+@media(max-width:768px){
+    .card{
+        padding:25px;
     }
 
-    /* ── Article Wrapper ── */
-    .article-wrap {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 0 24px 100px;
+    nav a{
+        margin:0 6px;
+        font-size:.9rem;
+    }
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.nav-logo img{
+    height:55px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:600;
+}
+
+.nav-links a:hover{
+    color:#FFD700;
+}
+
+@media(max-width:768px){
+
+    .nav-container{
+        flex-direction:column;
+        gap:10px;
     }
 
-    /* ── Article Header (below hero img) ── */
-    .article-header {
-      padding-top: 10px;
-      padding-bottom: 36px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 48px;
-    }
-    .article-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--gold-dim);
-      color: var(--gold);
-      font-family: var(--font-condensed);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      padding: 5px 13px;
-      border-radius: 4px;
-      margin-bottom: 18px;
-    }
-    .article-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: clamp(2.8rem, 7vw, 4.5rem);
-      color: #fff;
-      line-height: 0.95;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-    }
-    .article-title span { color: var(--gold); }
-    .article-meta-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .article-author {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .author-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--orange));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-    }
-    .author-name {
-      font-family: var(--font-condensed);
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #ddd;
-    }
-    .author-role {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-    }
-    .article-date {
-      font-family: var(--font-condensed);
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      letter-spacing: 1px;
-      padding: 6px 14px;
-      border: 1px solid var(--border);
-      border-radius: 50px;
-    }
-    .article-read-time {
-      font-family: var(--font-condensed);
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      letter-spacing: 1px;
+    .nav-links{
+        text-align:center;
     }
 
-    /* ── Article Body ── */
-    .article-body {
-      font-family: 'Lora', Georgia, serif;
-      font-size: 1.08rem;
-      line-height: 1.85;
-      color: #c8c8c8;
+    .nav-links a{
+        margin:0 8px;
     }
-    .article-body p { margin-bottom: 1.5em; }
+}
+.sub-brand{
+    color:#FFD700;
+    font-weight:800;
+    letter-spacing:3px;
+    margin-top:-10px;
+    margin-bottom:20px;
+}
+.insta-btn{
+    background: linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);
+    margin-left:10px;
+}
+.instagram-float{
+    position:fixed;
+    right:20px;
+    bottom:90px;
+    background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF);
+    color:white;
+    padding:14px 18px;
+    border-radius:50%;
+    font-size:20px;
+    text-decoration:none;
+    box-shadow:0 6px 20px rgba(0,0,0,0.3);
+    z-index:999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+/* Glow + Pulse Effect */
+.glow-text{
+    font-size:1.4rem;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#FFD700;
+    text-transform:uppercase;
+    animation: pulseGlow 2s infinite ease-in-out;
+    text-shadow:
+        0 0 5px #FFD700,
+        0 0 10px #FFD700,
+        0 0 20px rgba(255,215,0,0.6),
+        0 0 40px rgba(255,215,0,0.4);
+}
 
-    .article-body h2 {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      color: var(--gold);
-      letter-spacing: 2px;
-      margin: 2.5em 0 0.7em;
-      line-height: 1.1;
+/* Pulse animation */
+@keyframes pulseGlow{
+    0%{
+        transform:scale(1);
+        text-shadow:
+        0 0 5px #FFD700,
+        0 0 10px #FFD700;
     }
-    .article-body h3 {
-      font-family: var(--font-condensed);
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #ddd;
-      margin: 2em 0 0.6em;
+    50%{
+        transform:scale(1.08);
+        text-shadow:
+        0 0 10px #FFD700,
+        0 0 25px #FFD700,
+        0 0 45px rgba(255,215,0,0.8);
     }
+    100%{
+        transform:scale(1);
+        text-shadow:
+        0 0 5px #FFD700,
+        0 0 10px #FFD700;
+    }
+}
 
-    /* Pull quote */
-    .pull-quote {
-      border-left: 4px solid var(--gold);
-      padding: 20px 28px;
-      margin: 36px 0;
-      background: rgba(255,215,0,0.05);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    }
-    .pull-quote p {
-      font-family: var(--font-condensed);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1.4;
-      margin: 0 !important;
-      font-style: normal;
-    }
+/* ⚡ Lightning Flicker Effect */
+.lightning-text{
+    font-size:1.4rem;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#FFD700;
+    text-transform:uppercase;
+    position:relative;
+    display:inline-block;
+    animation: flicker 2.5s infinite;
+}
 
-    /* Highlight box */
-    .highlight-box {
-      background: var(--dark-3);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 32px;
-      margin: 36px 0;
-    }
-    .highlight-box h3 {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--gold);
-      letter-spacing: 2px;
-      margin: 0 0 16px;
-    }
-    .names-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .name-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      background: var(--dark-4);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      transition: border-color 0.2s;
-    }
-    .name-item:hover { border-color: rgba(255,215,0,0.3); }
-    .name-item span:first-child {
-      font-size: 1.2rem;
-    }
-    .name-item strong {
-      font-family: var(--font-condensed);
-      font-weight: 800;
-      font-size: 0.9rem;
-      color: #ddd;
-    }
-    .name-item em {
-      font-style: normal;
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      display: block;
-      font-family: var(--font-condensed);
-      letter-spacing: 1px;
-    }
+/* Glow base */
+.lightning-text{
+    text-shadow:
+    0 0 5px #FFD700,
+    0 0 15px #FFD700,
+    0 0 30px rgba(255,215,0,0.6);
+}
 
-    /* Article footer CTA */
-    .article-footer-cta {
-      background: linear-gradient(135deg, var(--dark-3), rgba(255,215,0,0.06));
-      border: 1px solid rgba(255,215,0,0.2);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-      margin-top: 60px;
-      text-align: center;
-    }
-    .article-footer-cta h3 {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--gold);
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-    }
-    .article-footer-cta p {
-      color: #aaa;
-      margin-bottom: 24px;
-      font-family: var(--font-body);
-    }
-    .article-footer-cta .cta-row {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
+/* ⚡ Flicker + lightning flash */
+@keyframes flicker {
+
+    0%{
+        opacity:1;
+        transform:scale(1);
+        text-shadow:
+        0 0 5px #FFD700,
+        0 0 15px #FFD700;
     }
 
-    /* Signature */
-    .article-sign {
-      margin-top: 48px;
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    10%{
+        opacity:0.6;
     }
-    .sign-logo { height: 42px; opacity: 0.8; }
-    .sign-text {
-      font-family: var(--font-condensed);
-      font-weight: 800;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .sign-text span { color: var(--text-dim); display: block; font-weight: 400; font-size: 0.75rem; }
 
-    @media (max-width: 600px) {
-      .article-hero { height: 45vw; min-height: 220px; }
-      .names-grid { grid-template-columns: 1fr; }
-      .article-footer-cta .cta-row { flex-direction: column; align-items: center; }
-      .pull-quote { padding: 16px 20px; }
+    12%{
+        opacity:1;
     }
-  </style>
+
+    20%{
+        opacity:0.3;
+    }
+
+    22%{
+        opacity:1;
+        text-shadow:
+        0 0 10px #fff,
+        0 0 25px #FFD700,
+        0 0 50px #FFD700;
+    }
+
+    40%{
+        opacity:1;
+    }
+
+    60%{
+        opacity:0.8;
+    }
+
+    80%{
+        opacity:1;
+        transform:scale(1.05);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+/* Active section highlight */
+nav a.active{
+    color:#000;
+    background:#FFD700;
+    padding:6px 12px;
+    border-radius:20px;
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(255,215,0,0.6);
+}
+
+/* Safe section animation (won't break layout) */
+section{
+    opacity:1;
+    transform:none;
+}
+
+/* animation only when class is added */
+section.show{
+    animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.news-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.news-card{
+    background:rgba(0,0,0,.8);
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.news-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.news-card h3{
+    color:#FFD700;
+    padding:15px;
+}
+
+.news-card p{
+    padding:0 15px 15px;
+}
+
+.news-card .btn{
+    margin:15px;
+}
+
+body{
+    background:#0d0d0d;
+    color:white;
+    font-family:Arial,sans-serif;
+    padding:40px;
+}
+
+header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+header h1{
+    color:#FFD700;
+}
+
+.results-container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.result-card{
+    background:#111;
+    border-left:5px solid #FFD700;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 0 15px rgba(255,215,0,.15);
+}
+
+.result-card h2{
+    color:#FFD700;
+}
+
+body{
+    background:#0d0d0d;
+    color:white;
+    font-family:Arial,sans-serif;
+    padding:40px;
+}
+
+header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+header h1{
+    color:#FFD700;
+}
+
+.fighters-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.fighter-card{
+    background:#111;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 0 15px rgba(255,215,0,.15);
+}
+
+.fighter-card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+}
+
+.fighter-card h2{
+    color:#FFD700;
+    padding:15px;
+}
+
+.fighter-card p{
+    padding:0 15px 20px;
+}
+
+
+</style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav id="navbar" class="scrolled">
-  <div class="nav-inner">
-    <a class="nav-logo" href="../index.html"><img src="../logo.png" alt="PureCombat"></a>
-    <ul class="nav-links">
-      <li><a href="../index.html#about">About</a></li>
-      <li><a href="../index.html#services">Services</a></li>
-      <li><a href="../results.html">Results</a></li>
-      <li><a href="../fighters.html">Fighters</a></li>
-      <li><a href="../index.html#contact" class="nav-cta">Join Now</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-  </div>
+<section class="hero">
+    <div class="hero-logo">
+		<img src="logo.png" alt="PureCombat Logo">
+	</div>
+
+	<h1>PURECOMBAT</h1>
+	<p class="sub-brand lightning-text">GEAR UP FOR GREATNESS</p>
+
+	<p class="tagline">
+	Train Like a Fighter • Think Like a Champion • Live Without Limits
+	</p>
+	<p>
+		Elite MMA & Boxing Training for Strength, Discipline, Fitness and Self-Confidence.
+	</p>
+    <a href="#join" class="btn">Contact Now</a>
+	<a class="btn insta-btn" href="https://instagram.com/purecombatofficial" target="_blank">
+		📸 Follow on Instagram
+</a>
+</section>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#plans">Plans</a>
+    <a href="#contact">Contact</a>
+	<a href="#latest-news">Latest News</a>
+	<a href="results.html">Fight Results</a>
+	<a href="fighters.html">Fighter Spotlight</a>
 </nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" id="mobileClose">✕</button>
-  <a href="../index.html" class="mob-link">Home</a>
-  <a href="../results.html" class="mob-link">Results</a>
-  <a href="../fighters.html" class="mob-link">Fighters</a>
-  <a href="../index.html#contact" class="mob-link" style="color:var(--gold)">Join Now →</a>
+
+
+<section id="about"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1800&q=80');">
+
+<section id="services"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1800&q=80');">
+
+<div class="card overlay-card">
+
+<h2>Our Services</h2>
+
+<ul class="services">
+<li>Boxing & MMA Training</li>
+<li>Professional Coaching</li>
+<li>Strength & Conditioning</li>
+<li>Weight Loss Programs</li>
+<li>Muscle Gain Programs</li>
+<li>Personal Workout Plans</li>
+<li>Self Defence Training</li>
+</ul>
+
 </div>
+</section>
 
-<!-- HERO IMAGE -->
-<div class="article-hero" style="margin-top:70px">
-  <img src="../images/week-1-banner.jpg" alt="PURECOMBAT Weekly Combat Report"
-       onerror="this.src='https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1800&q=80'">
-  <div class="article-hero-overlay"></div>
-</div>
 
-<!-- ARTICLE -->
-<div class="article-wrap">
+<section id="gallery">
+    <div class="card">
+        <h2>Gallery</h2>
 
-  <!-- Header -->
-  <div class="article-header reveal">
-    <div class="article-label">📰 Weekly Combat Report</div>
-    <h1 class="article-title">The New Generation Is<br><span>Knocking on the Door</span></h1>
-    <div class="article-meta-row">
-      <div class="article-author">
-        <div class="author-avatar">⚡</div>
-        <div>
-          <div class="author-name">Team PURECOMBAT</div>
-          <div class="author-role">Combat Sports Desk</div>
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=600&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=600&q=80" alt="">
         </div>
-      </div>
-      <div class="article-date">June 7, 2026</div>
-      <div class="article-read-time">⏱ 4 min read</div>
     </div>
-  </div>
+</section>
 
-  <!-- Body -->
-  <div class="article-body reveal">
+<section id="trainers"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1800&q=80');">
 
-    <p>
-      Combat sports never stand still. Every year new contenders emerge, veterans fight to stay relevant,
-      and future champions announce themselves to the world. This week was a perfect example of that
-      reality in both MMA and boxing.
-    </p>
+<div class="card overlay-card">
 
-    <h2>Gabriel Bonfim Sends a Message</h2>
+<h2>Expert Coaches</h2>
 
-    <p>
-      The biggest MMA story of the week came from UFC Vegas 118, where Brazil's Gabriel Bonfim delivered
-      a dominant performance against former UFC champion Belal Muhammad.
-    </p>
+<div class="trainers">
 
-    <p>
-      Bonfim controlled the fight with sharp striking, excellent distance management, and confidence
-      throughout five rounds. The unanimous decision victory extended his winning streak and firmly
-      established him among the top contenders in the UFC welterweight division.
-    </p>
-
-    <div class="pull-quote">
-      <p>"Technical skill, patience, and continuous improvement can rapidly change a career — Bonfim proved that this week."</p>
-    </div>
-
-    <p>
-      For young fighters, Bonfim's rise is a reminder that the next generation of UFC stars is already
-      here and ready. His performance was measured, intelligent, and devastating — the hallmarks of a
-      future champion.
-    </p>
-
-    <h2>Boxing's Cruiserweights Deliver a War</h2>
-
-    <p>
-      In boxing, former world champion Chris Billam-Smith defeated Ryan Rozicki in a hard-fought battle
-      at Zuffa Boxing 07. The fight showcased exactly what fans love about professional boxing: toughness,
-      determination, and world-class conditioning.
-    </p>
-
-    <p>
-      Billam-Smith weathered heavy pressure before eventually securing a stoppage victory in round 8,
-      strengthening his position among the world's elite cruiserweights. The bout also highlighted the
-      growing influence of Zuffa Boxing as it continues expanding into new markets.
-    </p>
-
-    <h2>Heavyweight Boxing Remains the Biggest Show</h2>
-
-    <p>
-      The heavyweight division continues to generate excitement across the combat sports world.
-      Tyson Fury's expected return and the ongoing discussions surrounding a potential clash with
-      Anthony Joshua remain among the biggest stories in boxing right now.
-    </p>
-
-    <p>
-      The heavyweight division has always represented the pinnacle of boxing, and 2026 appears
-      set to deliver several major matchups that fans have been waiting years for.
-    </p>
-
-    <div class="highlight-box">
-      <h3>⭐ Emerging Fighters To Watch</h3>
-      <div class="names-grid">
-        <div class="name-item"><span>🥋</span><div><strong>Gabriel Bonfim</strong><em>MMA · Welterweight</em></div></div>
-        <div class="name-item"><span>🥊</span><div><strong>Dalton Smith</strong><em>Boxing · Super-Lightweight</em></div></div>
-        <div class="name-item"><span>🥋</span><div><strong>Tom Nolan</strong><em>MMA · Lightweight</em></div></div>
-        <div class="name-item"><span>🥊</span><div><strong>Cheavon Clarke</strong><em>Boxing · Heavyweight</em></div></div>
-        <div class="name-item"><span>🥋</span><div><strong>Marcus McGhee</strong><em>MMA · Welterweight</em></div></div>
-        <div class="name-item"><span>🥊</span><div><strong>Sam Hickey</strong><em>Boxing · Super-Middle</em></div></div>
-      </div>
-    </div>
-
-    <h2>Final Thoughts</h2>
-
-    <p>
-      One lesson stands out this week: greatness is never guaranteed. Champions can fall overnight.
-      New contenders can emerge from nowhere. The fighters who continue learning, adapting, and
-      improving are the ones who ultimately rise to the top.
-    </p>
-
-    <p>
-      Whether you're training for fitness, competition, or personal growth — the same principle
-      applies inside the gym. Keep showing up. Keep improving. And always stay ready for your opportunity.
-    </p>
-
-    <!-- Signature -->
-    <div class="article-sign">
-      <img src="../logo.png" alt="PureCombat" class="sign-logo">
-      <div class="sign-text">
-        Team PURECOMBAT
-        <span>Sector 122, Noida · purecombatofficial</span>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="article-footer-cta">
-      <h3>Ready to Train?</h3>
-      <p>Join Noida's premier combat sports gym. MMA, Boxing, Strength & Conditioning — all under one roof.</p>
-      <div class="cta-row">
-        <a href="../index.html#contact" class="btn btn-primary">💬 Contact Us</a>
-        <a href="../fighters.html" class="btn btn-outline">🥊 Fighter Spotlight</a>
-        <a href="../results.html" class="btn btn-gold">🏆 Fight Results</a>
-      </div>
-    </div>
-
-  </div>
+<div class="trainer">
+<h3>Boxing Coach</h3>
+<p>Technical boxing, footwork, speed and conditioning.</p>
 </div>
 
-<!-- FOOTER -->
+<div class="trainer">
+<h3>MMA Coach</h3>
+<p>Striking, grappling and complete combat training.</p>
+</div>
+
+<div class="trainer">
+<h3>Fitness Coach</h3>
+<p>Weight loss, strength building and body transformation.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="plans"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1800&q=80');">
+    <div class="card overlay-card">
+        <h2>Membership Plans</h2>
+
+        <div class="plans">
+
+            <div class="plan">
+                <h3>Monthly</h3>
+                <p>₹5,000</p>
+            </div>
+
+            <div class="plan">
+                <h3>3 Months</h3>
+                <p>₹12,000</p>
+            </div>
+
+            <div class="plan">
+                <h3>6 Months</h3>
+                <p>₹18,000</p>
+            </div>
+
+            <div class="plan">
+                <h3>12 Months</h3>
+                <p>₹30,000</p>
+            </div>
+
+        </div>
+
+        <p class="offer-note">
+            Please contact us for more offers and customized membership packages.
+        </p>
+    </div>
+</section>
+
+<section id="join"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=1800&q=80');">
+    <div class="card overlay-card">
+        <h2>Contact Now</h2>
+
+		<form class="join-form"
+		id="whatsappForm"
+		onsubmit="sendToWhatsApp(); return false;">
+
+		<input type="text" id="name" placeholder="Your Name" required>
+
+		<input type="tel" id="phone" placeholder="Phone Number" required>
+
+		<input type="number" id="age" placeholder="Age" required>
+
+		<textarea id="goal" placeholder="Your Fitness Goal"></textarea>
+
+		<button type="submit">
+		Send via WhatsApp
+		</button>
+
+		</form>
+    </div>
+</section>
+
+
+<section id="latest-news" class="bg-section">
+
+<div class="card overlay-card">
+
+<h2>Latest Combat News</h2>
+
+<div class="news-grid">
+
+<div class="news-card">
+
+<img src="images/week-1-banner.jpg">
+
+<h3>PURECOMBAT Weekly Combat Report</h3>
+
+<p>
+Gabriel Bonfim's rise, heavyweight boxing updates,
+and emerging stars to watch.
+</p>
+
+<a href="blog/week-1.html" class="btn">
+Read Article
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact"
+class="bg-section"
+style="background-image:url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1800&q=80');">
+    <div class="card overlay-card">
+
+        <h2>Contact</h2>
+
+        <div class="contact-info">
+            <p>📞 +91 9728894872</p>
+            <p>📞 +91 8411008276</p>
+            <p>✉️ purecombatprivatelimited@gmail.com</p>
+        </div>
+
+		<iframe
+		src="https://www.google.com/maps?q=Sector+122+Noida+PureCombat&z=16&output=embed"
+		width="100%"
+		height="320"
+		style="border:0;border-radius:12px;"
+		loading="lazy"
+		allowfullscreen>
+		</iframe>
+		<p>
+		📸 Instagram:
+		<a href="https://instagram.com/purecombatofficial"
+		target="_blank"
+		style="color:#FFD700;text-decoration:none;font-weight:700;">
+		@purecombatofficial
+		</a>
+		</p>
+
+    </div>
+</section>
+
+<a class="whatsapp"
+href="https://wa.me/919728894872"
+target="_blank">
+💬 WhatsApp
+</a>
+
 <footer>
-  <div class="footer-logo"><img src="../logo.png" alt="PureCombat"></div>
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../results.html">Fight Results</a>
-    <a href="../fighters.html">Fighters</a>
-    <a href="../index.html#contact">Contact</a>
-  </div>
-  <p>© 2026 PURECOMBAT Private Limited</p>
+    © 2026 PURECOMBAT — Elite Combat Training
 </footer>
 
-<div class="float-group">
-  <a href="https://instagram.com/purecombatofficial" target="_blank" class="float-btn instagram">📸</a>
-  <a href="https://wa.me/919728894872" target="_blank" class="float-btn whatsapp">💬</a>
-</div>
+<script>
+function sendToWhatsApp() {
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let age = document.getElementById("age").value;
+    let goal = document.getElementById("goal").value;
+
+    let message =
+`🔥 New Enquiry for PureCombat 🔥
+👤 Name: ${name}
+📞 Phone: ${phone}
+🎂 Age: ${age}
+💪 Goal: ${goal}
+
+Please contact me.`;
+
+    let url = "https://wa.me/919728894872?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
+</script>
 
 <script>
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileClose = document.getElementById('mobileClose');
-hamburger.addEventListener('click', () => { hamburger.classList.add('open'); mobileMenu.classList.add('open'); document.body.style.overflow='hidden'; });
-mobileClose.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow=''; });
-document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow=''; }));
-const ro = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+/* =========================
+   ACTIVE SECTION TRACKING (ACCURATE)
+========================= */
+const observer = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                let id = entry.target.getAttribute("id");
+
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+
+                    if (link.getAttribute("href") === "#" + id) {
+                        link.classList.add("active");
+                    }
+                });
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.55   // 👈 KEY FIX (section must be 55% visible)
+    }
+);
+
+sections.forEach(section => {
+    observer.observe(section);
+});
 </script>
+
 </body>
 </html>

@@ -1,0 +1,22 @@
+{
+  "reports": [
+    {
+      "kind": "weekly",
+      "date": "2026-06-07",
+      "slug": "blog/week-1.html",
+      "label": "Weekly Report · Week 1",
+      "title": "The New Generation Is Knocking on the Door",
+      "dek": "Gabriel Bonfim’s statement win, a cruiserweight war at Zuffa Boxing 07, the heavyweight picture and the emerging fighters to watch.",
+      "tags": ["MMA", "Boxing"],
+      "headings": ["Gabriel Bonfim beats Belal Muhammad at UFC Vegas 118", "Chris Billam-Smith stops Ryan Rozicki at Zuffa Boxing 07", "Heavyweight boxing picture"],
+      "image": "images/week-1-banner.jpg",
+      "image_alt": "PURECOMBAT Weekly Combat Report banner",
+      "read_min": 4
+    }
+  ],
+  "results": [
+    {"event": "UFC Vegas 118", "date": "2026-06-06", "sport": "MMA", "winner": "Gabriel Bonfim", "loser": "Belal Muhammad", "method": "Unanimous Decision", "division": "Welterweight"},
+    {"event": "Zuffa Boxing 07", "date": "2026-06-05", "sport": "Boxing", "winner": "Chris Billam-Smith", "loser": "Ryan Rozicki", "method": "TKO", "division": "Cruiserweight"}
+  ],
+  "headlines": []
+}

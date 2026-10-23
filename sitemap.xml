@@ -4,5 +4,7 @@
   <url><loc>https://www.purecombat.in/results.html</loc></url>
   <url><loc>https://www.purecombat.in/fighters.html</loc></url>
   <url><loc>https://www.purecombat.in/blogs.html</loc></url>
-  <url><loc>https://www.purecombat.in/blog/week-1.html</loc></url>
+  <!-- HUB:SITEMAP:START -->
+  <url><loc>https://www.purecombat.in/blog/week-1.html</loc><lastmod>2026-06-07</lastmod></url>
+  <!-- HUB:SITEMAP:END -->
 </urlset>

@@ -1,0 +1,51 @@
+name: Daily Combat Hub
+
+on:
+  schedule:
+    - cron: "30 1 * * *"   # 07:00 IST every day
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Regenerate today's report even if it already exists"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: combat-hub
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r .github/combat_hub/requirements.txt
+
+      - name: Generate today's report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COMBAT_HUB_MODEL: ${{ vars.COMBAT_HUB_MODEL }}
+          COMBAT_HUB_MAX_SEARCHES: ${{ vars.COMBAT_HUB_MAX_SEARCHES }}
+        run: python .github/combat_hub/combat_hub.py ${{ inputs.force && '--force' || '' }}
+
+      - name: Publish
+        run: |
+          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+            echo "Nothing to publish."
+            exit 0
+          fi
+          git config user.name "PureCombat Combat Hub"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Daily Combat Report $(TZ=Asia/Kolkata date +%Y-%m-%d)"
+          git push

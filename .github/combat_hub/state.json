@@ -7,16 +7,244 @@
       "label": "Weekly Report · Week 1",
       "title": "The New Generation Is Knocking on the Door",
       "dek": "Gabriel Bonfim’s statement win, a cruiserweight war at Zuffa Boxing 07, the heavyweight picture and the emerging fighters to watch.",
-      "tags": ["MMA", "Boxing"],
-      "headings": ["Gabriel Bonfim beats Belal Muhammad at UFC Vegas 118", "Chris Billam-Smith stops Ryan Rozicki at Zuffa Boxing 07", "Heavyweight boxing picture"],
+      "tags": [
+        "MMA",
+        "Boxing"
+      ],
+      "headings": [
+        "Gabriel Bonfim beats Belal Muhammad at UFC Vegas 118",
+        "Chris Billam-Smith stops Ryan Rozicki at Zuffa Boxing 07",
+        "Heavyweight boxing picture"
+      ],
       "image": "images/week-1-banner.jpg",
       "image_alt": "PURECOMBAT Weekly Combat Report banner",
       "read_min": 4
     }
   ],
   "results": [
-    {"event": "UFC Vegas 118", "date": "2026-06-06", "sport": "MMA", "winner": "Gabriel Bonfim", "loser": "Belal Muhammad", "method": "Unanimous Decision", "division": "Welterweight"},
-    {"event": "Zuffa Boxing 07", "date": "2026-06-05", "sport": "Boxing", "winner": "Chris Billam-Smith", "loser": "Ryan Rozicki", "method": "TKO", "division": "Cruiserweight"}
+    {
+      "event": "UFC Vegas 118",
+      "date": "2026-06-06",
+      "sport": "MMA",
+      "winner": "Gabriel Bonfim",
+      "loser": "Belal Muhammad",
+      "method": "Unanimous Decision",
+      "division": "Welterweight"
+    },
+    {
+      "event": "Zuffa Boxing 07",
+      "date": "2026-06-05",
+      "sport": "Boxing",
+      "winner": "Chris Billam-Smith",
+      "loser": "Ryan Rozicki",
+      "method": "TKO",
+      "division": "Cruiserweight"
+    }
   ],
-  "headlines": []
+  "headlines": [
+    {
+      "title": "UFC Fighters Get Involved in Freestyle Wrestling Event Chaos as Security Steps",
+      "source": "EssentiallySports",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQbDUzcEVhVUVDOFJKT000NUpaWTRGQzRUZGZCNGFfQjU4WkNaUUxVcnFuLUo3d3d1QmJWNHltemI5aXB5OC1sT2hucGh6MEtmLVhib01OUWpiX3JIVEhod1VVai1HTmJMaGFrd21OTUZ0QktDLVhCcjFrNThsUWRIN2o5LXVycVB0b05OTjRxRUJjNzBMVjhkeDNWbVFacXV6aUhWSUhKcW54SHZWcUY1SC1QMzRjS3RaUUpRU1RtVGRlbVNoSGlLeXJaQnBqbUU?oc=5",
+      "sport": "MMA",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "UFC 333 video: Petr Yan, Merab Dvalishvili make weight for trilogy bout",
+      "source": "MMA Junkie",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOZ19XZGZVa19pU2hUMDJaNHZKNVdSbUdHTnhMMnlxTkVsNGlJSE9lUE1qcElwNGN1Y1M2VDItX3Y0N2dfbThZcV9VTUR2UWpLTTZpOWgxa3VMRjRSdzlKWkk3V3BhWkh2Tlg4MHlQOHhQS0FfckJrOWNSS2JGWXplbFRKZHRBMHdtc09mbGlBQUJxV3lvWFRXRzVvZWNUY1M2QUF3RVd1SGtJQUkxb0J6UFdhVzEzUjVJRTR3Sy1MSFcyNTRVLUF4Yzl5Zmd1enl5RUFDTQ?oc=5",
+      "sport": "MMA",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "UFC 333 video: Alexander Volkanovski, Movsar Evloev make weight for title fight",
+      "source": "MMA Junkie",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNd2NfLTRiU0xPWjV5QTh1Z2l0cDBVSjNfODRjVF91RlJBdTloMkdzb0prSUxZal83TmpwVzN3aFphTEQybHRiemV6MENkR19XaFhGUU1ta1V5bmxIdkd2UWRvN0tOMS1jSXJ2OUF2bi1TaEpMeGxzTHdhQUVmZTM2c3BvcnpmdGxsRnhZcVFMek5RNTg1QVlnQlR0NnNNSnY2TUg0bXJUZ1RURExqSlpEUWpCUm5VVmRmSEJZNFcxYk9RSkRoVGQtdTR4UURFNm83X2FwWDQtMmtudw?oc=5",
+      "sport": "MMA",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "UFC 333 weigh-in results from Abu Dhabi",
+      "source": "MSN",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOX3V1M1pNdUxMcGpSaTIyaW1OUUktbnM0Y21MY3pRd3U3Znd5YkRhYVA0MUZtN0wxdGR6SEhGdWVIdHNRZlo2cU9nbEVEVkd2Z2hYOWl3dUdtVzVSWHlwMC1hZGdmY2lIUlFMcVBYTl83RE53ZDZ3VHpmdFhYUzRCUllhQmdPRTdMNVBLaUt2Q3oyRXFTNUcw?oc=5",
+      "sport": "MMA",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Former ONE Championship Star Set for UFC Debut in Saudi",
+      "source": "MMA Sucka",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORTZLQi1FMUxFWjFBT1NCVnZqeFB2YmN3QWRSTVJtdzA4ZDNnYVJ5SkgzcF9CLWdxVGFIakRUcTJsLVMtVFlUaDI4QXBpMDhBNnhHcUtMMUZGRi16d3hPaTNpaUZJb0FRLWJoMGlwWGRJVm1BRExlR2dnaHFmdnZpOWVOdDF6R3Q0OW45NGRSNmdQMXBjSHdMQ3RaNllKVmpNbXRpQWJB?oc=5",
+      "sport": "MMA",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Charles Oliveira's UFC 335 card adds return of lightweight unbeaten in six Octagon appearances",
+      "source": "Bloody Elbow",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNOGhCX1U3eEpRTzJraHloMEM0cVFWTGN0M1hsdEwxM051Sjd1Y2FwQ0pXS3BSVGJQU0hZcmJtV21BcGt0Mm1pamRsUi1oUmVta2JCNldnUzROb2xScWtMblVwU0MzYllyUXhhMHRQeVRyNmVLTThNc0VVQW4xbFlyeERoRVh3bU1hN2JvWGxTVFppQVRXNUNGRVVCa1E4NUprWWFsSkFxYUZoUXEyVTFHb1dXSk52R1IwUGhXM1RQY1pVcWlSWmFmOQ?oc=5",
+      "sport": "MMA",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Filip Hrgovic on course for title defence against Frank Sanchez in Croatia before a unification with Daniel Dubois",
+      "source": "Sky Sports",
+      "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQSmVjUU90VWZMM3JZZFNjbC00cWZZbzVObWJrQlZCczE5eHl2NGc5MDZfRzI3RHRncTl6cUc2OXRhRTExV0N0cmg2c3hwSTRGZ3c2aGZfc1NxSUk3SFJRZjhSLXJqMmtfeFUwcDZZcTF1UExKOG40N3Q5N04wWTFZd1pLNER0MmVCY19DWTN6UmdhcmxyYnRFTUgwb2xOUkFIbTkzbWVVdnZkS3U3WC1DMFg1Z1M2bjJ5ZklYcnBEanRGNldKVDU4UXpNU1VocHUwc1VlSVFCblQ1SmVOaXZoVGNCbFFPQXdEUWFaYy1BaTFHcnM?oc=5",
+      "sport": "Boxing",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Wellingborough super slimmer Lisa is a knockout after losing 10st 1lb and meeting boxing legend",
+      "source": "Northamptonshire Telegraph",
+      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOSkVEcXRkbDl2NW51Yi1Vb3BpaGFqV2RDMjBQNDVfTk1HSlljQkJaQXJOTUJMRzV1d2NDTkwwLV9yZDJwcVIxNzJKay1HSkZ0ak5SdDA3QnBGMGQtV0VrelJRNDNFb0FLUWYyMzA5TWljdE1aMWp0d0I4SU1WSm5sWm8yMGxURExhdE9RQ0EyVUtXQlZJTGFxMkFQRVBnTURoMjVVdlMwM1pYU1d0X1I2eTJ1SDN2V29NazJtTjBmdkFEcWtmTFdWSXNDSGFyVTBjM2U5aGxmQTRTX0JkOTZsWHJyMklEZ3M?oc=5",
+      "sport": "Boxing",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Hill unfazed ahead of Senidoko title clash",
+      "source": "FBC News",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNV0Q1ZFExWndnMGplWkRtOVg2ZE5ybjJLZWZ6TndreEJSMVdGM1JfSk5sWjA2Z3lacWRwcUpLNzZwTmFwNjVpZXVzM2xRS2JvZTlZZzg3dVhwVFBJV1BVV0pEVWlmemtkbFJabWxyS3hTdmhNVGM5cjY1alNLSERvZnYtNA?oc=5",
+      "sport": "Boxing",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Young Bradford boxer wins gold at European Championships",
+      "source": "Telegraph and Argus",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPTEpQbl9tNkFnbENfZW1hb1JFWFc1OC1MaTU5UVF3R3JBamN4Q3F6bnRUVzgzREQ0MTdsU2hUZmgzV3FkYlNjbW5TdEF6eEtGWWtYZW9uTTJZZ0xFaFg3YktWMTZjOVlCUG04NjdLbVhQZ1FCbmFTOVg1b3h2OUFEbFFxNXhCUEY3Mk4ydEhOTFNmTlVnQm5RU0w3SVpaWGFiWnVGemJxRHRQUQ?oc=5",
+      "sport": "Boxing",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Lex Weston targeting step-up as title talk begins",
+      "source": "Irish Boxing",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNcTF6UVA5cXhyWXFJcF9XeFljYUFvTW53QkNQZWxIRW5LbmVEcXpsWWNtYWtwQkF4V1Y1aWplWVpucmpXVzZRZWZYRENHTWsyVkVQRkZ6aHNSV1FWTWl5OVA4dHFyMFFIM1FjOU5NQlFOMWhHdGhhU1M1NDBMYk5HVjlTSkxjQQ?oc=5",
+      "sport": "Boxing",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Polarising Aussie on verge of shock world title fight after Tszyu disaster",
+      "source": "Nine.com.au",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQWTVhcWlLU1F0QklwNV92MEV6NjdUQlQ3dTlCRF9fYmRScFpVcGF6VTk0UkRnRGF2Z29aWF9sZHlKa29hYmZaWFpHaGsxWjd5ZjNhbDZDMWlUdVphbEN5ZkxfTEJ5Z3gtSGRfVnJsVVNVMXhlcEttS1VEWW9Ld0t0WWpNZ0Z2M0FsRXpUZEVUVzh5TGZHc2VVVWg0S210T2k2MjUtbzhXSDZxejlEU3FkZGNvT2g2RF8zVDJpQl9DVkVXczRSTUNNT1JqNEM1azJ1dGNGcW1JSmE3ZllYM0hYTU50VQ?oc=5",
+      "sport": "Boxing",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "The Sydney headhunter getting her kicks from high-intensity Muay Thai",
+      "source": "AFR",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOR1hwU2xJQ3FLazgyWl9mWWZqSDdKZWF3RVdadE1ZRktwTFVKZkVRVFppUmxBZTVnaXpTQzVDV3VObzNXbnlnS1pYRktfY2puUlJNazA4cXVMWGJiQnBYajRZdHVPSE9QVzBnbU9XZ3c1Q2plVFA2Y2EwY1Y1RDcyQUFMandiRjVPQmxMVmZVNVRVMlRxZlRBZ2tkRlFVUkVhS0ZEVllWYU92THFkcTNuUVZQX1V2UVAwcDlueWZmaVdkVk45dXljTnJ0UG5nY3l5TmVJNnVyVEc?oc=5",
+      "sport": "Muay Thai",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "Johan Ghazali Challenges Unbeaten Rustam Yunusov After ONE Muay Thai Rivalry Reignites",
+      "source": "FightBook MMA",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQNGI0Ry1zY0UxYkY1MGcxU05PeTB0NmwtLXZOcUNvTmZMN1dvWk95OEVKY2JzOW1lbWxmYlVrOVhKcTR1RURjU1Q5eURnRWx4Nk1SSWlSQ0NVaEttYVpyRFY0Qlg1OVB1c1lXaGZjVTg0WTNJRUQydzcwUTl3UW96NHdBXzQ2MWswOHpsWjhpaFdQZmYx?oc=5",
+      "sport": "Muay Thai",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "9-year-old Attleboro Muay Thai champion to represent US in Greece",
+      "source": "Boston 25 News",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPMS1PQzJPN1VleHhoMF8wbVE2bFlqRmZUVzZYdzEyaFF1WHhKSGFJS1VSeTdhckZENmdGak13YXM3ZkkxNWljVmxsMVFfaGJaQnNPZEpfVXVwbjFGM3UtSG1xdlBzTjdGMnVPQi1QdG1qc1Vyd1h0X1hPRDlIM1UwNHZrTW5Na1ZaYjdkMjdRR3drSGt2U3M0YndlNnEzakhHZS1NeERoWlRmc2Mtb0ljcGoxM2tGZ2JMTDVxYkxfSEZ4azd0aFHSAdoBQVVfeXFMT2t5TF9SamJLZWVVeE5Rd3p0V1JqZnRMVk9wWUxoMVRMVjVWaDhmSmZSSWpqd2k1aU1Ld09PQV81c3dkOHRxZzE5ZFN1Yy1udlM0QmdBZEx6cGprcGFFLTJwT21YQlNFcjlJQi1mR3JKdDdjci0xcDVra3J5a1l5VFE3V21kMGkyZy1UYTZ1R09feDR5d0laLXZNNWN0MTNvWG5SNFBYLWVDbDY5Qlh0VF83SDRSbWYta3M4YkVMbzZlZlB1ZDd1MHFROHU3TnJVU0tEYVc4b0lPUnc?oc=5",
+      "sport": "Muay Thai",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "Muay Thai proves a big hit at The Hunslet Club",
+      "source": "South Leeds Life",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE4yOURoTWhjUjRoYUdZUS1YVXFyOXJYa2RuMmpJa3dVZHBrZXAyTVF4eER2aU1raU5kUV9wSjZtUk1oUXc5YTBIZXdVZ0VLYldkM29pOVd1YkxuYldwWVRqYzRXbmx0YUZPWXFOT1VKYnMtLUtCUVhJblA4SkFrVm8?oc=5",
+      "sport": "Muay Thai",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "PEAK ENTERTAINMENT Avatar and Antar Kacem put on one heck of a Muay Thai show!",
+      "source": "ONE Championship",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPUjRUdzFiek9GRXpLVG9QV0tvbGdhZ0FaeXMxODhXdFkxMXd3MjZ3WnJ1SnN0RDBiZ0dzMERoMWJoSlhmN1BMd28wXy1SSzdtcVVvbkNmVlotWXU4VkFIT284bllRZDFnS2NOZTR4QkdFYWtmdDdlQzViUkFIWVhHMzZrSllnZnZoNkZVeE9LWTVMaVZWQ3dBOEhPRkl1ZG5jcFBUSUlId3hjcWM?oc=5",
+      "sport": "Muay Thai",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "‘I’m Ready, I’m Hungry’ – Marat Grigorian Sets Sights On ONE SAMURAI Featherweight Kickboxing Tournament Final",
+      "source": "Yahoo Sports",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9aeE1UaDZleHFfZHpINi13Wncyajl3SXBEVkpHRmZOallKaHNZTjJRR0p2RFF2Sk81R2VoUTRoRXpRb2RFVEJ2T1FkbTBrNFBBc3RtRlJEUXpYOWp2ZUxmLXZfUHZveEMwRGRWY25JLVN2LW9mTVEzSVFCRQ?oc=5",
+      "sport": "Kickboxing",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Belarusian Maikov wins two golds at WKF World Championships in junior solo events",
+      "source": "BelTA – News",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNMzQ0TlNSRE9YcmRta3ktb056WElkTU5SczIzTnBndHNnYlFQWld0ak1Zek4xSjJJWEs2Y0I3UDdxRkhkS1RNNm5vNnkyTkhDWi1YWHVQRUxnNzdzNmVWUkRhMm9tV3psWUM4ZEJPdENURWpTNlNKdXZMT3hOcWFxMk9VSmJKbXVlQkZzOEE3SXo3SE1UQWdyNFFWMURadkF0SnI3QTJBRzgzYXl3YXlJZGZkenpaeHh6S0F3Y2V1QXNVUEtT?oc=5",
+      "sport": "Kickboxing",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "How a 16-year-old sports star overcame personal loss to become a champion",
+      "source": "InYourArea",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPWWxqX0FqR1NjTThMdUYwenN3aVhwT1Y1NWNndW5GcWQ3aVcxX21rUmd0WDNWcWZCNEV3MFZMWU4yT0w5UnlXbFlsbzU4VjVvc2h5dmNpNkVvbXUxRXcwZGNaa0VhbUJxY0wxLWkyWkRKWFNkMWFiQ2dIX1FTeV9MQUdTMi1LTUVsa0pkZXdwT0hQRUVKMG4weVl5dnU2MFZfTXlSUEQ1YkRUMUk?oc=5",
+      "sport": "Kickboxing",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "Uzbekistan.. UAE wins 31 medals in Kickboxing World Cup",
+      "source": "صوت الإمارات",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPX0xCVU5vWFZ3MDFMSUNMbmYwOWRzckRMajJKU0U4UFlLdEctbWxtYTVmMHRtQ1JpSU9ZNzRNdzNPUUFaWG4ycGlrMTZrN2tOaU8xeHViclNfUi1tMlFwdE5GajVpLUVDT2w0UFF0c0dsbmtKLUc5bGtDMEducVd6WjVJSmxHMEszQlpKMDhMMjN3R1dmS1ZGLXJZdnQxT204SC11MnduQmlLMmlvWXc?oc=5",
+      "sport": "Kickboxing",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "North East kickboxing champion Sam Stout prepares for Sunderland fight with local sponsorship support",
+      "source": "openPR.com",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxObnQwWjMwZzVvQ1ppMkE4TlVyWlBHOTBCNGdDSmFrUjFsXy1VQnpZTW1DaEs4T0s2YUJSZ0tXYWg5d3BXUnFfUWFIT0dkN3NoVVllWWtnOWdLNFRTRmYyWkhKdm9lWW42RXFwdlFPZ0V1ZjdONThJSWJXazVqWGltQndGbUNva3V6ZlRwbXFR?oc=5",
+      "sport": "Kickboxing",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "Cardiff mum turns passion for kickboxing into award-winning business journey",
+      "source": "Wales 247",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOVFN4VUxCSm5WamhOeGlvbkRUZXhLNzRSSHd1djZqTmIwYlBsazhKWnlWVEtvX0tUblJ0TnBMQmhJUi1tVDRJVVFoV3R1QWlKUGtkdnBQT3ZSZDB1UHN6bkI3MjhMWk1xR0tJaUhGSWNGcE5GYlp3QWxfbWVSb3ptTXhPT0xNUnBQbXR3OFZrazNBa1RrTzlSS0FuMUQxRGg5YmdTckZB?oc=5",
+      "sport": "Kickboxing",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "Pettis Draws Support From BKFC Fighter Ahead Of India Bout",
+      "source": "boxingnews.com",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5PRDFjX1d2S2ZGTWFFVV9hTWI0Z0d0WG01M1hPeDI0Ym9iSG5xQlVJRlF0RTU4Y2puRlZ4Wmo2a19QNklOYjBZX3VyLWlRLXFYZ2RzWWpKWHB2UjNKOERseHBVZWVGNkJPaEt6bzByZ0RyQQ?oc=5",
+      "sport": "India",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "World Boxing U-19 C'ships: Aditya, Mausam seal quarterfinal spots",
+      "source": "IANS LIVE",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNU3lETkhIeTNzTUotMWhKbWdrMllOVEE3UkdpLUxvMHlfVmJVdzZWTjhheERicjlnYlRvT2NlSE02TDJjbEI1Y19vc0xLekNwUk1BZnkxYlU1QTNnU3VBcW55NzJqelFEYkkyMnB4dUdNanU1dlFNVi1nWk56aUY3NEQ3cVNQa1pZcmtyb1JxR2x5VXlsMFI5Rk1naE5NN0U?oc=5",
+      "sport": "India",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "U-19 World Boxing: Prachi Tokas Storms Into Semifinals",
+      "source": "Dainik Jagran MP CG",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeDJMVjN2RWlHLWo1dE8yNm13N21rN253cUhwcmdVMlIzUzZFTFM4d1VfTlc5ZHdMVW81SDN0NVZuaW1yVmN1MWdNZjg3bms0eGg0UXJOeEFkSXBKMHB2dEZkOUZ2NVhuUWZFcHVXU3FYdTd5RGhfT3ZYbUc3dmFUeFZ3TERSbmdCSHVHU2l3MjY4UDd6dGkxMlhGTGdpbU5DUk5vWll0M3N6R21XRE5ZbA?oc=5",
+      "sport": "India",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "Leadership Crisis Deepens in Boxing Federation of India as Rohit Jain Urges State Units to Attend October 28 Special Meeting",
+      "source": "Hindusthan Samachar English",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPLWxEODZBMFFPNVIzS1p5VHA1ZlpmTHd3c18tcWt4NVFwaUNjeTh1djdBNklUTFp1Q2pKTTBMaThFZi1yczdaSFZFb0owdWUzTGF0RHRwVy00cDR3eDVlSTdSYThrZXV6bXpfRzE5TmVUQV83Y3dyMjQzOXpqM0hEMU01dGJrRGRYQllqbHEySFkzeVk?oc=5",
+      "sport": "India",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "Civic Studios announces three releases spanning climate, sex education and women’s boxing",
+      "source": "The Economic Times",
+      "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNSDlNSFRxVTEySzNHbmhDbF94Q2pRN3pSSUh2UjdNbXNuQW5hRXhZLWRWX1RFbmZrM045dmdaMmJHVWItX0RxRFd1R3lLX1VRalo5b1NTN05EcE5wQWZQWDBfeEdnUE1aMkhicjE3c1lQdVRBNXBQR3N4UGlyaXhtcFJHMm1FbEZtUXhmU2tmY00wd0RYX2RGeXE1MEQxbzBLQTRLNEdfTVVJZEdqUmZHNHVSdWRIZUd5Sm9DYTdTS3ZFNzhYN3lHeWVMeGYtN19CWDhndjcxNWFEYjEwSUNCbFVVZ0VNR1IxTE40MmJwN3hkMTVwVFVhLVBid0UyWkXSAYQCQVVfeXFMTnJITXJadWxDa2hxTjRxUEE3ZEQ5ekZneG4wVFpVTTBMOUEwNW5YcXFNYy1FQmhEVkl5ZTVxdkpRb1lSaTZKdU9kN0tOTm01dEFnQkZuZHNhVncyVjF0VVlzU09oQXIxbFRuQUVSd1lFM0xfZkxaYTh4NjR0YnA4MUtPZ0VHUHFQZ2ZmVkt6X3hsWHFjNE1LSlYzWlBNMExRbkttc1U4VmJBQWN0dm5XNUc1MXJNNE02M0J1Vlg1VkN3akQ5bnFhMURqZlVSamZjM0R3UnZIWGRma3ZDSjJCcFBNZUk5aUFIQ3dNS3JhYVZlZ0w4cENwOTc0Nnc3Uld5Z2E4MEk?oc=5",
+      "sport": "India",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "Indian Boxer Gulfishan Gaur Triumphs in Malaysia, Defeats Pakistani Rival with Rahul Gupta's Support",
+      "source": "Lokmat Times",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQcUJzSnJqeWtGdnNQSGJmYlFjcFVFX1pRYTEzUl9BeDRKTHc5NzBBcmVOMWxuUXQ0ejY4a0xCNDBZUHYyRmdOcUZiZnF2UTM5T3cwQ2YyclRFZjJTaDh0WGFnN0hWYXRYSkhfdWJEdkNEN1FKTTkwZENQaW5rbXNtRUFOZ2R4Y2d6UWhhQzRHNFlORHZnU0xMejJpLXNxSndWelE5WXpDZURjSHpuMHFuNWNqejJFNGppOGRpNWh5Rm1RQWR5TTZFcFVkMFh0cnpXcGfSAdcBQVVfeXFMTmV6WGlNMk9iaUYxWk5uc3AwYmNWdVhvQlpXU19qNDU4bzhIMjBiSGNmeUl5WVJsejBjV3NQNm5hNG9vZlVYYTcwLVJzUTM4aUJHaVpabFZSczZ6MlBtZzdrMlBXZzFadkdZUFl5MzhGZGVMaGEtY3pTWlZkOFNqdTRzVk83cjYtZ1ZKVF9uRndZSlhQejlVY2lSckwyRnlobVFIdWpjUFhRaWpJUl9HZEc2LUd6ZVh1cnZuZmRJa0xaTFJELUVFRk8zU3lITko0YXlCdVd6V0E?oc=5",
+      "sport": "India",
+      "date": "2026-10-22"
+    }
+  ],
+  "headlines_updated": "2026-10-23 11:20"
 }

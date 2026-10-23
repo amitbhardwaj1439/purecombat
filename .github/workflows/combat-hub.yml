@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r .github/combat_hub/requirements.txt
 
-      - name: Generate today's report
+      - name: Update headlines (and AI report if a key is set)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           COMBAT_HUB_MODEL: ${{ vars.COMBAT_HUB_MODEL }}
@@ -47,5 +47,5 @@ jobs:
           git config user.name "PureCombat Combat Hub"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Daily Combat Report $(TZ=Asia/Kolkata date +%Y-%m-%d)"
+          git commit -m "Combat Hub update $(TZ=Asia/Kolkata date +%Y-%m-%d)"
           git push

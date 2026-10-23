@@ -1,17 +1,19 @@
 """Daily Combat Hub publisher for www.purecombat.in.
 
-Each run:
-  1. Collects the last day's combat sports headlines from Google News
-     (MMA, boxing, Muay Thai, kickboxing, Indian combat sports).
-  2. Research call: Claude picks the top stories and verifies them with web search.
-  3. Writing call: Claude turns the verified notes into an original daily report (JSON).
-  4. Saves it to state.json and regenerates the Combat Hub pages from state.json:
-     blog/<date>.html, blogs.html, the home page news card, results.html, sitemap.xml.
+Free part (always runs):
+  Collects the newest combat sports headlines from Google News (MMA, boxing, Muay Thai, kickboxing,
+  Indian combat sports) and publishes them on the News page and the home page.
+
+Optional AI part (only when ANTHROPIC_API_KEY is set, paid):
+  Claude verifies the top stories with web search and writes an original Daily Combat Report
+  (blog/<date>.html), and adds confirmed fight results to results.html.
+
+Pages are regenerated from state.json, only between <!-- HUB:...:START/END --> markers.
 
 Usage:
-  python .github/combat_hub/combat_hub.py            full run (needs ANTHROPIC_API_KEY)
-  python .github/combat_hub/combat_hub.py --render   rebuild pages from state.json, no API calls
-  python .github/combat_hub/combat_hub.py --force    regenerate today's report even if it exists
+  python .github/combat_hub/combat_hub.py            daily run
+  python .github/combat_hub/combat_hub.py --render   rebuild pages from state.json, no network
+  python .github/combat_hub/combat_hub.py --force    regenerate today's AI report even if it exists
 """
 
 import argparse
@@ -52,11 +54,29 @@ PER_FEED = 15
 MIN_HEADLINES = 8
 # A headline must mention at least one of these to count as combat sports news.
 COMBAT_WORDS = re.compile(
-    r"\b(ufc|mma|box(er|ers|ing)?|fight(s|er|ers|ing)?|bout|knock(out|s)?|ko|tko|muay|kickbox\w*|glory|"
+    r"\b(ufc|mma|box(er|ers|ing)?|fight(s|er|ers|ing)?|bout|ko|tko|muay|kickbox\w*|(?-i:GLORY)|"
     r"one (championship|fc|friday|samurai)|mfn|matrix|pfl|bellator|octagon|title|belt|champion\w*|"
     r"undercard|weigh-?ins?|submission|sparring|grappl\w*|jiu-?jitsu|bjj|wrestl\w*|punch\w*|bantam\w*|"
     r"featherweight|lightweight|welterweight|middleweight|heavyweight|cruiserweight|flyweight|strawweight)\b",
     re.I)
+OFF_TOPIC = re.compile(r"\b(net worth|arrest\w*|police|gangster|murder\w*|killed|steal\w*|thief|theft|"
+                       r"detained|jailed|betting|horoscope)\b", re.I)
+INDIA_WORDS = re.compile(
+    r"\b(india|indian|indians|mfn|matrix fight night|boxing federation of india|bfi|delhi|mumbai|noida|"
+    r"bengaluru|hyderabad|kolkata|chennai|punjab|haryana|manipur|khelo india)\b", re.I)
+INDIAN_SOURCES = re.compile(
+    r"times of india|hindustan|indian express|ndtv|ians|\bani\b|\bpti\b|sportstar|the hindu|rediff|lokmat|"
+    r"dainik|dd news|telangana today|khel now|news18|india today|firstpost|tribune|deccan|mid-day|zee|"
+    r"republic|outlook|economic times|sportskeeda|olympics\.com|the bridge", re.I)
+INTERNATIONAL_MMA = re.compile(r"\b(ufc|pfl|bellator|one championship|dana white)\b", re.I)
+SPORT_WORDS = [
+    ("Muay Thai", re.compile(r"\bmuay\b", re.I)),
+    ("Kickboxing", re.compile(r"\b(kickbox\w*|(?-i:GLORY))\b", re.I)),
+    ("MMA", re.compile(r"\b(ufc|mma|pfl|bellator|octagon|one championship)\b", re.I)),
+    ("Boxing", re.compile(r"\bbox(er|ers|ing)?\b", re.I)),
+]
+HEADLINES_PER_SPORT = 6
+SOCIAL_SOURCES = {"facebook", "instagram", "youtube", "x", "twitter", "tiktok", "reddit"}
 
 ARROW = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" '
          'stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>')
@@ -106,9 +126,21 @@ def fetch_feed(query):
                "published": published}
 
 
+def classify(title, source, feed_sport):
+    """Pick the sport from the headline itself; the feed it came from is only a hint."""
+    if INDIA_WORDS.search(title):
+        return "India"
+    if feed_sport == "India" and INDIAN_SOURCES.search(source) and not INTERNATIONAL_MMA.search(title):
+        return "India"
+    for sport, pattern in SPORT_WORDS:
+        if pattern.search(title):
+            return sport
+    return feed_sport if feed_sport != "India" else "Boxing"
+
+
 def collect_headlines():
     seen, headlines = set(), []
-    for sport, query in FEEDS:
+    for feed_sport, query in FEEDS:
         try:
             items = list(fetch_feed(query))
         except Exception as e:  # one broken feed should not stop the run
@@ -118,17 +150,50 @@ def collect_headlines():
         added = 0
         for h in items:
             key = re.sub(r"[^a-z0-9]", "", h["title"].lower())[:80]
-            if not h["title"] or key in seen or not COMBAT_WORDS.search(h["title"]):
+            if (not h["title"] or key in seen or not COMBAT_WORDS.search(h["title"])
+                    or OFF_TOPIC.search(h["title"]) or h["source"].lower() in SOCIAL_SOURCES):
                 continue
             seen.add(key)
-            headlines.append({**h, "sport": sport})
+            headlines.append({**h, "sport": classify(h["title"], h["source"], feed_sport)})
             added += 1
             if added >= PER_FEED:
                 break
-        log(f"  {sport:<10} {added:>2} new  <- {query}")
+        log(f"  {feed_sport:<10} {added:>2} new  <- {query}")
     for i, h in enumerate(headlines):
         h["id"] = i
     return headlines
+
+
+def similar(a, b):
+    """True when two headlines are mostly the same story (e.g. five outlets on one weigh-in)."""
+    wa, wb = (set(re.findall(r"[a-z0-9]{4,}", t.lower())) for t in (a, b))
+    return bool(wa and wb) and len(wa & wb) / min(len(wa), len(wb)) >= 0.5
+
+
+def refresh_headlines(state, now):
+    """Free daily update: the newest headlines per sport, no AI involved."""
+    log("Collecting headlines...")
+    headlines = collect_headlines()
+    log(f"  {len(headlines)} unique headlines")
+    if len(headlines) < MIN_HEADLINES:
+        log("Too few headlines found; keeping the previous list.")
+        return False
+    picked = []
+    for sport in SPORTS:
+        newest = sorted((h for h in headlines if h["sport"] == sport), key=lambda h: h["published"], reverse=True)
+        chosen = []
+        for h in newest:
+            if not any(similar(h["title"], c["title"]) for c in chosen):
+                chosen.append(h)
+            if len(chosen) == HEADLINES_PER_SPORT:
+                break
+        picked += chosen
+    state["headlines"] = [
+        {"title": h["title"], "source": h["source"], "url": h["url"], "sport": h["sport"],
+         "date": h["published"].astimezone(IST).strftime("%Y-%m-%d")} for h in picked]
+    state["headlines_updated"] = now.strftime("%Y-%m-%d %H:%M")
+    log("  kept " + ", ".join(f"{s}: {sum(h['sport'] == s for h in picked)}" for s in SPORTS))
+    return True
 
 
 # ---------------------------------------------------------------- Claude
@@ -352,7 +417,6 @@ def generate(state, today, force):
     new_results = [r for r in report["results"]
                    if (r["event"].lower(), r["winner"].lower(), r["loser"].lower()) not in existing]
     state["results"] = sorted(new_results + state["results"], key=lambda r: r["date"], reverse=True)[:60]
-    state["headlines"] = report["headlines"]
 
     for u in usage + [write_usage]:
         log(f"  usage: in={u.input_tokens} out={u.output_tokens} "
@@ -504,20 +568,50 @@ def report_card(r, prefix=""):
         </article>"""
 
 
-def headlines_block(items):
+def headline_item(h, indent):
+    d = datetime.strptime(h["date"], "%Y-%m-%d")
+    return (f'\n{indent}<li><a href="{esc(h["url"])}" target="_blank" rel="noopener nofollow">'
+            f'<small><b>{esc(h["sport"])}</b> · {esc(h["source"])} · {d:%b} {d.day}</small>'
+            f'<span>{esc(h["title"])}</span></a></li>')
+
+
+def updated_label(state, short=False):
+    stamp = datetime.strptime(state["headlines_updated"], "%Y-%m-%d %H:%M")
+    return f"Updated {stamp.day} {stamp:%b}" if short else f"Updated {stamp.day} {stamp:%b %Y, %H:%M} IST"
+
+
+def headlines_block(state):
+    items = state.get("headlines", [])
     if not items:
         return ""
-    lis = "".join(
-        f'\n          <li><a href="{esc(h["url"])}" target="_blank" rel="noopener nofollow">'
-        f'<small><b>{esc(h["sport"])}</b> · {esc(h["source"])}</small><span>{esc(h["title"])}</span></a></li>'
-        for h in items)
+    groups = []
+    for sport in SPORTS:
+        lis = "".join(headline_item(h, "          ") for h in items if h["sport"] == sport)
+        if lis:
+            title = "Indian combat sports" if sport == "India" else sport
+            groups.append(f'\n        <h3>{esc(title)}</h3>\n        <ul class="headline-list">{lis}\n        </ul>')
     return f"""
       <div class="headlines reveal">
-        <span class="eyebrow">Around the fight world</span>
-        <h2>Latest headlines</h2>
-        <ul class="headline-list">{lis}
-        </ul>
+        <span class="eyebrow">Around the fight world · {esc(updated_label(state))}</span>
+        <h2>Latest headlines</h2>{"".join(groups)}
+        <p class="headlines-note">Headlines link to the original publishers and refresh automatically every day.</p>
       </div>"""
+
+
+def home_headlines_card(state):
+    items = state["headlines"]
+    top = [next(h for h in items if h["sport"] == s) for s in SPORTS if any(h["sport"] == s for h in items)]
+    lis = "".join(headline_item(h, "            ") for h in top[:5])
+    return f"""
+        <article class="card feature-card reveal">
+          <div>
+            <span class="eyebrow">{esc(updated_label(state, short=True))}</span>
+            <h3>Today&rsquo;s headlines</h3>
+            <ul class="headline-list mini">{lis}
+            </ul>
+          </div>
+          <a href="blogs.html" class="link-arrow">All headlines {ARROW}</a>
+        </article>"""
 
 
 def replace_block(path, name, content):
@@ -532,8 +626,14 @@ def replace_block(path, name, content):
 def render_site(state):
     reports = state["reports"]
     replace_block(ROOT / "blogs.html", "REPORTS", "".join(report_card(r) for r in reports[:60]))
-    replace_block(ROOT / "blogs.html", "HEADLINES", headlines_block(state.get("headlines", [])))
-    replace_block(ROOT / "index.html", "LATEST", report_card(reports[0]))
+    replace_block(ROOT / "blogs.html", "HEADLINES", headlines_block(state))
+    # Home page: a fresh AI report if one exists, otherwise today's headlines, otherwise the latest report.
+    today = datetime.now(IST).strftime("%Y-%m-%d")
+    if state.get("headlines") and not (reports[0]["kind"] == "daily" and reports[0]["date"] == today):
+        latest = home_headlines_card(state)
+    else:
+        latest = report_card(reports[0])
+    replace_block(ROOT / "index.html", "LATEST", latest)
     replace_block(ROOT / "results.html", "RESULTS", "".join(result_card(r) for r in state["results"]))
     replace_block(ROOT / "sitemap.xml", "SITEMAP", "".join(
         f"\n  <url><loc>{SITE}/{r['slug']}</loc><lastmod>{r['date']}</lastmod></url>" for r in reports))
@@ -548,8 +648,10 @@ def main():
 
     state = load_state()
     if not args.render:
-        today = datetime.now(IST).strftime("%Y-%m-%d")
-        if generate(state, today, args.force):
+        now = datetime.now(IST)
+        changed = refresh_headlines(state, now)
+        changed = generate(state, now.strftime("%Y-%m-%d"), args.force) or changed
+        if changed:
             save_state(state)
     render_site(state)
     log("Pages rendered.")
